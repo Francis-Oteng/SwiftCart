@@ -5,10 +5,10 @@ First off, thank you for considering contributing to our project! Your help is g
 #### Reporting Bugs
 If you find a bug in the project, please submit an issue. When reporting a bug, please include:
 
-*A clear and descriptive title.
-*A detailed description of the problem, including steps to reproduce.
-*Any relevant logs, screenshots, or other information that could help diagnose the problem.
-*Suggesting Enhancements
+* A clear and descriptive title.
+* A detailed description of the problem, including steps to reproduce.
+* Any relevant logs, screenshots, or other information that could help diagnose the problem.
+* Suggesting Enhancements
 We welcome suggestions for improvements and new features. When suggesting an enhancement, please include:
 
 * A clear and descriptive title.
@@ -19,7 +19,7 @@ If you would like to contribute code, follow these steps:
 
 #### 1.Fork the repository: Create a fork of the repository on GitHub.
 Clone your fork: Clone your fork to your local machine.
-git clone https://github.com/<your-username>/food-delivery-multivendor.git
+git clone https://github.com/<your-username>/SwiftCart.git
 cd food-delivery-multivendor
 #### 2.Create a new branch: Create a new branch for your feature or bugfix.
 git checkout -b feature-or-bugfix-description
