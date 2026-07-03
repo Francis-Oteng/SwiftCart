@@ -1,2 +1,2 @@
 # SwiftCart
-SwiftCart is an on-demand grocery delivery platform that eliminates the friction of traditional shopping by connecting consumers to local stores through a seamless, fast, and reliable mobile experience.
+SwiftCart is your on-demand grocery delivery app designed for people who value their time. From fresh produce and dairy to household essentials, SwiftCart connects you to your nearest stores and delivers everything straight to your door — fast. With a clean, easy-to-use interface, real-time order tracking, and flexible delivery slots, getting your groceries has never been this effortless. No queues, no hassle, just swift.
