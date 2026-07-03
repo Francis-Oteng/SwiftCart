@@ -77,8 +77,8 @@ Ensure you have the following installed:
 
 #### 1. Clone the repository
 ```bash
-git clone https://github.com/enatega/food-delivery-multivendor.git
-cd food-delivery-multivendor
+git clone https://github.com/enatega/SwiftCart.git
+cd SwiftCart
 ```
 
 #### 2. Install dependencies
