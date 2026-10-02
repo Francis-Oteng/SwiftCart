@@ -2,7 +2,7 @@
 
 using SwiftCart.Models;
 
-namespace SwiftCart.ViewModels.Home
+namespace SwiftCart.Models.ViewModels.Account
 {
     public class HomeViewModel
     {

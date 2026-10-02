@@ -7,7 +7,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class CreateStoreViewModel
     {
@@ -40,7 +40,7 @@ namespace SwiftCart.ViewModels.Store
 ```csharp
 // ViewModels/Store/StoreDashboardViewModel.cs
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class StoreDashboardViewModel
     {
@@ -78,7 +78,7 @@ namespace SwiftCart.ViewModels.Store
 
 using SwiftCart.Models;
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class StoreOrderViewModel
     {
@@ -104,7 +104,7 @@ namespace SwiftCart.ViewModels.Store
 
 using SwiftCart.Models;
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class StoreOrdersViewModel
     {
@@ -132,7 +132,7 @@ namespace SwiftCart.ViewModels.Store
 
 using SwiftCart.Models;
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class MyStoreViewModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SwiftCart.Models.ViewModels
+﻿namespace SwiftCart.Models.ViewModels.Checkout
 {
     public class CheckoutViewModel
     {

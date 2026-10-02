@@ -2,7 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace SwiftCart.ViewModels.Account
+namespace SwiftCart.Models.ViewModels.Account
 {
     public class ForgotPasswordViewModel
     {

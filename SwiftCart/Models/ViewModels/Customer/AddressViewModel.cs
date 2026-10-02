@@ -1,6 +1,6 @@
 ﻿namespace SwiftCart.Models.ViewModels
 {
-    public class RiderViewModel
+    public class AddressViewModel
     {
     }
 }
