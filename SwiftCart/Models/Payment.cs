@@ -1,5 +1,4 @@
-﻿```csharp
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SwiftCart.Models
@@ -38,4 +37,4 @@ namespace SwiftCart.Models
         public DateTime? RefundedDate { get; set; }
     }
 }
-```
+
