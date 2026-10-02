@@ -3,7 +3,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace SwiftCart.ViewModels.Product
+namespace SwiftCart.Models.ViewModels.Product
 {
     public class CreateProductViewModel
     {

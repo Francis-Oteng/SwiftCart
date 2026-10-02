@@ -1,6 +1,6 @@
 ﻿// ViewModels/Product/ProductDetailsViewModel.cs
 
-namespace SwiftCart.ViewModels.Product
+namespace SwiftCart.Models.ViewModels.Product
 {
     public class ProductDetailsViewModel
     {

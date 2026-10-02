@@ -1,7 +1,6 @@
-﻿
-// ViewModels/Product/ProductListViewModel.cs
+﻿// ViewModels/Product/ProductListViewModel.cs
 
-namespace SwiftCart.ViewModels.Product
+namespace SwiftCart.Models.ViewModels.Product
 {
     public class ProductListViewModel
     {

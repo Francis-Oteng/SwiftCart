@@ -3,7 +3,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using SwiftCart.Models;
-using SwiftCart.ViewModels.Cart;
+using SwiftCart.Models.ViewModels.Cart;
 
 namespace SwiftCart.ViewModels.Checkout
 {

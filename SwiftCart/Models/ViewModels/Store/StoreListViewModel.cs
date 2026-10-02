@@ -1,6 +1,6 @@
 ﻿// ViewModels/Store/StoreListViewModel.cs
 
-namespace SwiftCart.ViewModels.Store
+namespace SwiftCart.Models.ViewModels.Store
 {
     public class StoreListViewModel
     {

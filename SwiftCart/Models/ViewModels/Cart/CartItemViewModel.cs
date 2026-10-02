@@ -1,6 +1,6 @@
 ﻿// ViewModels/Cart/CartItemViewModel.cs
 
-namespace SwiftCart.ViewModels.Cart
+namespace SwiftCart.Models.ViewModels.Cart
 {
     public class CartItemViewModel
     {

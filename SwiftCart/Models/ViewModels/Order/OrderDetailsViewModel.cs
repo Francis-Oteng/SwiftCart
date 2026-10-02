@@ -3,7 +3,7 @@
 using SwiftCart.Models;
 using SwiftCart.ViewModels.Cart;
 
-namespace SwiftCart.ViewModels.Order
+namespace SwiftCart.Models.ViewModels.Order
 {
     public class OrderDetailsViewModel
     {

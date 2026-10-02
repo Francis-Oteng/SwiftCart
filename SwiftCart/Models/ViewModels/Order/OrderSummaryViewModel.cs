@@ -2,7 +2,7 @@
 
 using SwiftCart.Models;
 
-namespace SwiftCart.ViewModels.Order
+namespace SwiftCart.Models.ViewModels.Order
 {
     public class OrderSummaryViewModel
     {
