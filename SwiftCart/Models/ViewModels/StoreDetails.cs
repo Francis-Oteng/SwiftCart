@@ -1,5 +1,4 @@
-﻿```csharp
-// ViewModels/Store/StoreDetailsViewModel.cs
+﻿// ViewModels/Store/StoreDetailsViewModel.cs
 
 namespace SwiftCart.ViewModels.Store
 {
@@ -38,4 +37,4 @@ namespace SwiftCart.ViewModels.Store
         public string Name { get; set; } = string.Empty;
     }
 }
-```
+

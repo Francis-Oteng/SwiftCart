@@ -1,11 +1,10 @@
-﻿```csharp
-// ViewModels/Checkout/CheckoutViewModel.cs
+﻿// ViewModels/Checkout/CheckoutViewModel.cs
 
 using System.ComponentModel.DataAnnotations;
 using SwiftCart.Models;
 using SwiftCart.Models.ViewModels.Cart;
 
-namespace SwiftCart.ViewModels.Checkout
+namespace SwiftCart.Models.ViewModels.Admin
 {
     public class CheckoutViewModel
     {
@@ -58,4 +57,4 @@ namespace SwiftCart.ViewModels.Checkout
         public bool IsDefault { get; set; }
     }
 }
-```
+

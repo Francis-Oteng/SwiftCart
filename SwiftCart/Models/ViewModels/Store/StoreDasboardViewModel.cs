@@ -1,22 +1,26 @@
-﻿```csharp
-// ViewModels/Store/StoreDashboardViewModel.cs
+﻿// ViewModels/Store/StoreDashboardViewModel.cs
 
 namespace SwiftCart.Models.ViewModels.Store
 {
     public class StoreDashboardViewModel
     {
         public string StoreName { get; set; } = string.Empty;
+
         public string? LogoUrl { get; set; }
 
         public bool IsApproved { get; set; }
+
         public bool IsOpen { get; set; }
 
-        public int Today'sOrders { get; set; }
+        public int TodaysOrders { get; set; }
+
         public int PendingOrders { get; set; }
+
         public int PreparingOrders { get; set; }
+
         public int CompletedOrders { get; set; }
 
-        public decimal Today'sRevenue { get; set; }
+        public decimal TodaysRevenue { get; set; }
 
         public IEnumerable<StoreOrderViewModel> RecentOrders { get; set; }
             = new List<StoreOrderViewModel>();
@@ -28,8 +32,9 @@ namespace SwiftCart.Models.ViewModels.Store
     public class LowStockProductViewModel
     {
         public int ProductId { get; set; }
+
         public string ProductName { get; set; } = string.Empty;
+
         public int AvailableStock { get; set; }
     }
 }
-```

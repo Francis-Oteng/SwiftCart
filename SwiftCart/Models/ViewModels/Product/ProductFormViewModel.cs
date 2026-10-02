@@ -1,6 +1,4 @@
-﻿
-
-// ViewModels/Product/ProductFormViewModel.cs
+﻿// ViewModels/Product/ProductFormViewModel.cs
 
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
@@ -45,10 +43,10 @@ namespace SwiftCart.Models.ViewModels.Product
         public string Name { get; set; } = string.Empty;
     }
 
-    public class StoreOptionViewModel
+    public class   StoreOptionViewModel
     {
         public int StoreId { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }
-```
+

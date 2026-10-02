@@ -43,4 +43,3 @@ namespace SwiftCart.Models.ViewModels.Account
         public bool IsAvailable { get; set; }
     }
 }
-```

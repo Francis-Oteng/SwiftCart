@@ -1,16 +1,12 @@
-﻿
-// ViewModels/Store/EditStoreViewModel.cs
+﻿// ViewModels/Store/CreateStoreViewModel.cs
 
-using Microsoft.AspNetCore.Http;
-using SwiftCart.Models;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
-namespace SwiftCart.Models.ViewModels.Store
+namespace SwiftCart.ViewModels.Store
 {
-    public class EditStoreViewModel
+    public class CreateStoreViewModel
     {
-        public int StoreId { get; set; }
-
         [Required]
         [StringLength(150)]
         public string Name { get; set; } = string.Empty;
@@ -19,7 +15,13 @@ namespace SwiftCart.Models.ViewModels.Store
         public string? Description { get; set; }
 
         [Required]
+        [StringLength(250)]
         public string Address { get; set; } = string.Empty;
+
+        [Required]
+        public string City { get; set; } = string.Empty;
+
+        public string? Region { get; set; }
 
         [Phone]
         public string? PhoneNumber { get; set; }
@@ -27,75 +29,7 @@ namespace SwiftCart.Models.ViewModels.Store
         [EmailAddress]
         public string? Email { get; set; }
 
-        public string? ExistingLogoUrl { get; set; }
-
         public IFormFile? Logo { get; set; }
-
-        public bool IsOpen { get; set; }
     }
 }
 
-
-
-
-  
-
-
-
-
-
-
-
-```csharp
-// ViewModels/Store/StoreOrdersViewModel.cs
-
-using SwiftCart.Models;
-
-namespace SwiftCart.Models.ViewModels.Store
-{
-    public class StoreOrdersViewModel
-    {
-        public IEnumerable<StoreOrderRowViewModel> Orders { get; set; }
-            = new List<StoreOrderRowViewModel>();
-
-        public string? SearchTerm { get; set; }
-        public OrderStatus? Status { get; set; }
-    }
-
-    public class StoreOrderRowViewModel
-    {
-        public int OrderId { get; set; }
-        public string OrderNumber { get; set; } = string.Empty;
-        public string CustomerName { get; set; } = string.Empty;
-        public DateTime CreatedDate { get; set; }
-        public decimal Total { get; set; }
-        public OrderStatus Status { get; set; }
-    }
-}
-```
-
-```csharp
-// ViewModels/Store/MyStoreViewModel.cs
-
-using SwiftCart.Models;
-
-namespace SwiftCart.Models.ViewModels.Store
-{
-    public class MyStoreViewModel
-    {
-        public StoreSummaryViewModel Store { get; set; }
-            = new StoreSummaryViewModel();
-    }
-
-    public class StoreSummaryViewModel
-    {
-        public int StoreId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string? Description { get; set; }
-        public string Location { get; set; } = string.Empty;
-        public StoreStatus Status { get; set; }
-        public bool IsOpen { get; set; }
-        public string? LogoUrl { get; set; }
-    }
-}
-```

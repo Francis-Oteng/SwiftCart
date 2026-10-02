@@ -21,4 +21,3 @@ namespace SwiftCart.Models.ViewModels.Order
         public DateTime CreatedDate { get; set; }
     }
 }
-```

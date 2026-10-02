@@ -1,5 +1,4 @@
-﻿```csharp
-// ViewModels/Customer/EditCustomerProfileViewModel.cs
+﻿// ViewModels/Customer/EditCustomerProfileViewModel.cs
 
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
@@ -24,4 +23,3 @@ namespace SwiftCart.Models.ViewModels.Customer
         public IFormFile? ProfilePhoto { get; set; }
     }
 }
-```
