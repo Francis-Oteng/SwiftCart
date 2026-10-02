@@ -1,5 +1,108 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.CheckoutViewModel
 @{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Checkout</h2>
+
+    <form asp-action="PlaceOrder" method="post">
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger"></div>
+
+        <div class="row g-4">
+            <div class="col-lg-7">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Delivery Address</h5>
+                    </div>
+                    <div class="card-body">
+                        <label asp-for="AddressId" class="form-label">
+                            Select Address
+                        </label>
+                        <select asp-for="AddressId"
+                                asp-items="Model.AddressOptions"
+                                class="form-select">
+                            <option value="">Select a saved address</option>
+                        </select>
+                        <span asp-validation-for="AddressId"
+                              class="text-danger"></span>
+
+                        <div class="mt-3">
+                            <label asp-for="DeliveryInstructions"
+                                   class="form-label"></label>
+                            <textarea asp-for="DeliveryInstructions"
+                                      class="form-control"
+                                      rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">Payment Method</h5>
+                    </div>
+                    <div class="card-body">
+                        <label asp-for="PaymentMethod" class="form-label"></label>
+                        <select asp-for="PaymentMethod"
+                                asp-items="Model.PaymentMethodOptions"
+                                class="form-select">
+                            <option value="">Select payment method</option>
+                        </select>
+                        <span asp-validation-for="PaymentMethod"
+                              class="text-danger"></span>
+
+                        <p class="form-text">
+                            Payment availability depends on the payment methods
+                            configured by the application.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h5 class="mb-0">Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var item in Model.Items)
+                        {
+                            <div class="d-flex justify-content-between gap-3 mb-3">
+                                <span>@item.ProductName × @item.Quantity</span>
+                                <span>@item.Subtotal.ToString("C")</span>
+                            </div>
+                        }
+
+                        <hr />
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span>@Model.Subtotal.ToString("C")</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Delivery Fee</span>
+                            <span>@Model.DeliveryFee.ToString("C")</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between fw-bold">
+                            <span>Total</span>
+                            <span>@Model.Total.ToString("C")</span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mt-4">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

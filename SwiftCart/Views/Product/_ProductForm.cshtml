@@ -1,0 +1,43 @@
+﻿@model SwiftCart.ViewModels.ProductFormViewModel
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+</div>
+<div class="mb-3">
+    <label asp-for="Price" class="form-label"></label>
+    <input asp-for="Price" class="form-control" />
+    <span asp-validation-for="Price" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="AvailableStock" class="form-label"></label>
+    <input asp-for="AvailableStock" class="form-control" />
+    <span asp-validation-for="AvailableStock" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="CategoryId" class="form-label">Category</label>
+    <select asp-for="CategoryId" asp-items="Model.CategoryOptions" class="form-select">
+        <option value="">Select category</option>
+    </select>
+    <span asp-validation-for="CategoryId" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="StoreId" class="form-label">Store</label>
+    <select asp-for="StoreId" asp-items="Model.StoreOptions" class="form-select">
+        <option value="">Select store</option>
+    </select>
+</div>
+<div class="mb-3">
+    <label asp-for="ImageFile" class="form-label">Product Image</label>
+    <input asp-for="ImageFile" type="file" accept="image/*" class="form-control" />
+</div>
+<div class="form-check">
+    <input asp-for="IsAvailable" class="form-check-input" />
+    <label asp-for="IsAvailable" class="form-check-label">Available for sale</label>
+</div>
+

@@ -1,5 +1,65 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.DeliveryActionViewModel
+
 @{
+    ViewData["Title"] = "Delivery In Transit";
 }
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow-sm text-center">
+
+                <div class="card-body p-5">
+
+                    <i class="fas fa-motorcycle fa-4x text-primary mb-4"></i>
+
+                    <h2>Delivery In Transit</h2>
+
+                    <p class="lead">
+                        @Model.OrderNumber
+                    </p>
+
+                    <p class="text-muted">
+                        The rider is currently delivering the order.
+                    </p>
+
+                    <div class="mb-4">
+
+                        <p class="mb-1">
+                            <strong>Pickup</strong>
+                        </p>
+
+                        <p class="text-muted">
+                            @Model.PickupAddress
+                        </p>
+
+                        <i class="fas fa-arrow-down mb-3"></i>
+
+                        <p class="mb-1">
+                            <strong>Destination</strong>
+                        </p>
+
+                        <p class="text-muted">
+                            @Model.DeliveryAddress
+                        </p>
+
+                    </div>
+
+                    <a asp-action="Track"
+                       asp-route-id="@Model.DeliveryId"
+                       class="btn btn-primary">
+                        Track Delivery
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

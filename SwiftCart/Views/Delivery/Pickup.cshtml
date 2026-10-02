@@ -1,5 +1,63 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.DeliveryActionViewModel
+
 @{
+    ViewData["Title"] = "Pick Up Delivery";
 }
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow-sm text-center">
+
+                <div class="card-body p-5">
+
+                    <i class="fas fa-box-open fa-4x text-primary mb-4"></i>
+
+                    <h2>Pick Up Order</h2>
+
+                    <p class="text-muted">
+                        @Model.OrderNumber
+                    </p>
+
+                    <p>
+                        Confirm that you have collected the order from
+                        <strong>@Model.PickupAddress</strong>.
+                    </p>
+
+                    <form asp-action="UpdateStatus" method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="id"
+                               value="@Model.DeliveryId">
+
+                        <input type="hidden"
+                               name="status"
+                               value="PickedUp">
+
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Confirm Pickup
+                        </button>
+
+                        <a asp-action="Details"
+                           asp-route-id="@Model.DeliveryId"
+                           class="btn btn-outline-secondary ms-2">
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

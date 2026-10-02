@@ -1,5 +1,113 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.AdminReportsViewModel
+
 @{
+    ViewData["Title"] = "Reports";
 }
+
+<div class="container-fluid py-4">
+
+    <h2 class="mb-4">Reports</h2>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Daily Revenue</h6>
+                    <h4>@Model.DailyRevenue.ToString("C")</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Weekly Orders</h6>
+                    <h4>@Model.WeeklyOrders</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Monthly Revenue</h6>
+                    <h4>@Model.MonthlyRevenue.ToString("C")</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Delivery Performance</h6>
+                    <h4>@Model.DeliveryPerformance.ToString("0.##")%</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    Top Stores
+                </div>
+
+                <div class="card-body">
+
+                    @foreach (var store in Model.TopStores)
+                    {
+                        <div class="d-flex justify-content-between border-bottom py-2">
+
+                            <span>@store.StoreName</span>
+
+                            <strong>
+                                @store.OrderCount
+                            </strong>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    Top Products
+                </div>
+
+                <div class="card-body">
+
+                    @foreach (var product in Model.TopProducts)
+                    {
+                        <div class="d-flex justify-content-between border-bottom py-2">
+
+                            <span>@product.ProductName</span>
+
+                            <strong>
+                                @product.QuantitySold
+                            </strong>
+
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

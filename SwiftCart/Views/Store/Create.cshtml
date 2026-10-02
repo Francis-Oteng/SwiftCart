@@ -1,0 +1,22 @@
+﻿@model SwiftCart.ViewModels.StoreFormViewModel
+@{
+    ViewData["Title"] = "Create Store";
+}
+
+<div class="container py-4">
+    <h2>Create Store</h2>
+
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <partial name="_StoreForm" model="Model" />
+
+        <button class="btn btn-primary mt-3">Create Store</button>
+        <a asp-action="Index" class="btn btn-outline-secondary mt-3">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

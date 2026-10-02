@@ -1,5 +1,67 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.CustomerDashboardViewModel
 @{
+    ViewData["Title"] = "Customer Dashboard";
 }
+
+<div class="container py-4">
+    <h2>Welcome, @Model.FullName</h2>
+    <p class="text-muted">Your SwiftCart account overview.</p>
+
+    <div class="row g-3 my-3">
+        <div class="col-md-4">
+            <div class="card shadow-sm"><div class="card-body">
+                <h6>Orders</h6><h3>@Model.TotalOrders</h3>
+                <a asp-controller="Order" asp-action="Index">View orders</a>
+            </div></div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm"><div class="card-body">
+                <h6>Active Orders</h6><h3>@Model.ActiveOrders</h3>
+                <a asp-controller="Order" asp-action="Track">Track order</a>
+            </div></div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm"><div class="card-body">
+                <h6>Saved Addresses</h6><h3>@Model.AddressCount</h3>
+                <a asp-action="Addresses">Manage addresses</a>
+            </div></div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header">Recent Orders</div>
+        <div class="card-body p-0">
+            @if (Model.RecentOrders.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead><tr><th>Order</th><th>Date</th><th>Total</th><th>Status</th><th></th></tr></thead>
+                        <tbody>
+                        @foreach (var order in Model.RecentOrders)
+                        {
+                            <tr>
+                                <td>@order.OrderNumber</td>
+                                <td>@order.CreatedDate</td>
+                                <td>@order.Total.ToString("C")</td>
+                                <td>@order.Status</td>
+                                <td><a asp-controller="Order" asp-action="Details"
+                                       asp-route-id="@order.OrderId">View</a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p class="p-3 mb-0 text-muted">No orders found.</p>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

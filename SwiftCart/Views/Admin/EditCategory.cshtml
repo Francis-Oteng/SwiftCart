@@ -1,5 +1,86 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@model SwiftCart.ViewModels.CategoryViewModel
+
 @{
+    ViewData["Title"] = "Edit Category";
 }
+
+<div class="container py-4">
+
+    <h2 class="mb-4">Edit Category</h2>
+
+    <form asp-action="EditCategory"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               asp-for="CategoryId">
+
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger"></div>
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <div class="mb-3">
+
+                    <label asp-for="Name"
+                           class="form-label"></label>
+
+                    <input asp-for="Name"
+                           class="form-control">
+
+                    <span asp-validation-for="Name"
+                          class="text-danger"></span>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label asp-for="Description"
+                           class="form-label"></label>
+
+                    <textarea asp-for="Description"
+                              class="form-control"
+                              rows="4"></textarea>
+
+                </div>
+
+                <div class="form-check">
+
+                    <input asp-for="IsActive"
+                           class="form-check-input">
+
+                    <label asp-for="IsActive"
+                           class="form-check-label">
+                        Active
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer">
+
+                <button class="btn btn-primary">
+                    Save Changes
+                </button>
+
+                <a asp-action="Categories"
+                   class="btn btn-outline-secondary">
+                    Cancel
+                </a>
+
+            </div>
+
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

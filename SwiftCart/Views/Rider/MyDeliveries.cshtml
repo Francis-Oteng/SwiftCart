@@ -1,5 +1,77 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@model SwiftCart.ViewModels.MyDeliveriesViewModel
+
 @{
+    ViewData["Title"] = "My Deliveries";
 }
+
+<div class="container py-4">
+
+    <h2 class="mb-4">My Deliveries</h2>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-0">
+
+            @if (Model.Deliveries != null && Model.Deliveries.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-hover mb-0">
+
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Pickup</th>
+                                <th>Delivery</th>
+                                <th>Status</th>
+                                <th>Assigned</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var delivery in Model.Deliveries)
+                            {
+                                <tr>
+                                    <td>@delivery.OrderNumber</td>
+                                    <td>@delivery.PickupAddress</td>
+                                    <td>@delivery.DeliveryAddress</td>
+
+                                    <td>
+                                        <span class="badge bg-secondary">
+                                            @delivery.Status
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        @delivery.AssignedAt
+                                    </td>
+
+                                    <td>
+                                        <a asp-action="Details"
+                                           asp-route-id="@delivery.DeliveryId"
+                                           class="btn btn-sm btn-outline-primary">
+                                            Details
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="p-4 text-center text-muted">
+                    You have no assigned deliveries.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

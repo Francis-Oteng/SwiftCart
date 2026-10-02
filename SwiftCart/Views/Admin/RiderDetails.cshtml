@@ -1,5 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.AdminRiderDetailsViewModel
+
 @{
+    ViewData["Title"] = "Rider Details";
 }
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>Rider Details</h2>
+
+        <a asp-action="Riders"
+           class="btn btn-outline-secondary">
+            Back
+        </a>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <dl class="row">
+
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Phone</dt>
+                <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+                <dt class="col-sm-3">Vehicle</dt>
+                <dd class="col-sm-9">@Model.VehicleType</dd>
+
+                <dt class="col-sm-3">Vehicle Number</dt>
+                <dd class="col-sm-9">@Model.VehicleNumber</dd>
+
+                <dt class="col-sm-3">Approval</dt>
+                <dd class="col-sm-9">@Model.ApprovalStatus</dd>
+
+                <dt class="col-sm-3">Availability</dt>
+                <dd class="col-sm-9">@Model.AvailabilityStatus</dd>
+
+            </dl>
+
+            @if (Model.CanApprove)
+            {
+                <form asp-action="ApproveRider"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden"
+                           name="id"
+                           value="@Model.RiderId">
+
+                    <button class="btn btn-success">
+                        Approve Rider
+                    </button>
+
+                </form>
+            }
+
+        </div>
+    </div>
+</div>

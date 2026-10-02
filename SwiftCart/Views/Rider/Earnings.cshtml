@@ -1,5 +1,93 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.RiderEarningsViewModel
+
 @{
+    ViewData["Title"] = "Earnings";
 }
+
+<div class="container py-4">
+
+    <h2 class="mb-4">Earnings</h2>
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Total Earnings</h6>
+                    <h3>@Model.TotalEarnings.ToString("C")</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Completed Deliveries</h6>
+                    <h3>@Model.CompletedDeliveries</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-muted">Average Earnings</h6>
+                    <h3>@Model.AverageEarnings.ToString("C")</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-header">
+            <h5 class="mb-0">Earnings History</h5>
+        </div>
+
+        <div class="card-body p-0">
+
+            @if (Model.EarningsHistory != null && Model.EarningsHistory.Any())
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-hover mb-0">
+
+                        <thead>
+                            <tr>
+                                <th>Order</th>
+                                <th>Completed</th>
+                                <th>Delivery Fee</th>
+                                <th>Earnings</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var earning in Model.EarningsHistory)
+                            {
+                                <tr>
+                                    <td>@earning.OrderNumber</td>
+                                    <td>@earning.CompletedAt</td>
+                                    <td>@earning.DeliveryFee.ToString("C")</td>
+                                    <td>@earning.Earnings.ToString("C")</td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+            else
+            {
+                <div class="p-4 text-center text-muted">
+                    No earnings records found.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+﻿@model SwiftCart.ViewModels.AddressFormViewModel
+
+<div class="mb-3">
+    <label asp-for="Label" class="form-label"></label>
+    <input asp-for="Label" class="form-control" />
+    <span asp-validation-for="Label" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="RecipientName" class="form-label"></label>
+    <input asp-for="RecipientName" class="form-control" />
+    <span asp-validation-for="RecipientName" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="PhoneNumber" class="form-label"></label>
+    <input asp-for="PhoneNumber" class="form-control" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="AddressLine" class="form-label"></label>
+    <input asp-for="AddressLine" class="form-control" />
+    <span asp-validation-for="AddressLine" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="City" class="form-label"></label>
+    <input asp-for="City" class="form-control" />
+    <span asp-validation-for="City" class="text-danger"></span>
+</div>
+<div class="form-check">
+    <input asp-for="IsDefault" class="form-check-input" />
+    <label asp-for="IsDefault" class="form-check-label">Default address</label>
+</div>
+

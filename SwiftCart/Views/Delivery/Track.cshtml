@@ -1,5 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.DeliveryTrackingViewModel
+
 @{
+    ViewData["Title"] = "Track Delivery";
 }
+
+<div class="container py-4">
+
+    <div class="mb-4">
+        <h2>Track Delivery</h2>
+        <p class="text-muted">
+            Order @Model.OrderNumber
+        </p>
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="position-relative">
+
+                @foreach (var step in Model.TrackingSteps)
+                {
+                    <div class="d-flex mb-4">
+
+                        <div class="me-3">
+
+                            @if (step.IsCompleted)
+                            {
+                                <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center"
+                                     style="width:40px;height:40px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                            }
+                            else if (step.IsCurrent)
+                            {
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
+                                     style="width:40px;height:40px;">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="rounded-circle bg-light text-secondary d-flex align-items-center justify-content-center"
+                                     style="width:40px;height:40px;">
+                                    <i class="fas fa-circle"></i>
+                                </div>
+                            }
+
+                        </div>
+
+                        <div>
+                            <h6 class="mb-1">@step.Title</h6>
+
+                            @if (!string.IsNullOrEmpty(step.Description))
+                            {
+                                <p class="text-muted mb-1">
+                                    @step.Description
+                                </p>
+                            }
+
+                            @if (step.Timestamp.HasValue)
+                            {
+                                <small class="text-muted">
+                                    @step.Timestamp
+                                </small>
+                            }
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+            <hr>
+
+            <div id="delivery-map"
+                 class="rounded bg-light d-flex align-items-center justify-content-center"
+                 style="height:350px;">
+
+                <div class="text-center text-muted">
+                    <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
+                    <p class="mb-0">
+                        Live delivery map can be connected here using SignalR.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

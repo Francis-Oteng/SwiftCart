@@ -1,0 +1,42 @@
+﻿@model SwiftCart.ViewModels.StoreOrdersViewModel
+@{
+    ViewData["Title"] = "Store Orders";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4">Store Orders</h2>
+
+    <div class="card shadow-sm"><div class="card-body p-0">
+        @if (Model.Orders.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead>
+                        <tr><th>Order</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var order in Model.Orders)
+                    {
+                        <tr>
+                            <td>@order.OrderNumber</td>
+                            <td>@order.CustomerName</td>
+                            <td>@order.CreatedDate</td>
+                            <td>@order.Total.ToString("C")</td>
+                            <td>@order.Status</td>
+                            <td>
+                                <a asp-controller="Order" asp-action="Details"
+                                   asp-route-id="@order.OrderId"
+                                   class="btn btn-sm btn-outline-primary">View</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="p-4 mb-0 text-muted">No orders are available for this store.</p>
+        }
+    </div></div>
+</div>

@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.OrderConfirmationViewModel
 @{
+    ViewData["Title"] = "Order Confirmation";
 }
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-sm text-center">
+                <div class="card-body p-5">
+                    <i class="fas fa-check-circle fa-4x text-success mb-3"></i>
+                    <h2>Order Confirmed</h2>
+                    <p class="text-muted">
+                        Your order has been recorded.
+                    </p>
+
+                    <dl class="row text-start mt-4">
+                        <dt class="col-sm-5">Order Number</dt>
+                        <dd class="col-sm-7">@Model.OrderNumber</dd>
+
+                        <dt class="col-sm-5">Order Status</dt>
+                        <dd class="col-sm-7">@Model.Status</dd>
+
+                        <dt class="col-sm-5">Total</dt>
+                        <dd class="col-sm-7">@Model.Total.ToString("C")</dd>
+
+                        <dt class="col-sm-5">Delivery Address</dt>
+                        <dd class="col-sm-7">@Model.DeliveryAddress</dd>
+                    </dl>
+
+                    <a asp-controller="Order"
+                       asp-action="Details"
+                       asp-route-id="@Model.OrderId"
+                       class="btn btn-primary">
+                        View Order
+                    </a>
+
+                    <a asp-controller="Product"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary">
+                        Continue Shopping
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

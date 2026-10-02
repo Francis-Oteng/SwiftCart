@@ -1,0 +1,82 @@
+﻿@model SwiftCart.ViewModels.MyReviewsViewModel
+
+@{
+    ViewData["Title"] = "My Reviews";
+}
+
+<div class="container py-4">
+
+    <h2 class="mb-4">My Reviews</h2>
+
+    @if (Model.Reviews != null && Model.Reviews.Any())
+    {
+        <div class="row g-4">
+
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="col-md-6">
+
+                    <div class="card shadow-sm h-100">
+
+                        <div class="card-body">
+
+                            <div class="d-flex justify-content-between">
+
+                                <div>
+                                    <h5>@review.StoreName</h5>
+
+                                    <div class="text-warning">
+
+                                        @for (var i = 1; i <= review.Rating; i++)
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+
+                                    </div>
+                                </div>
+
+                                <small class="text-muted">
+                                    @review.CreatedDate
+                                </small>
+
+                            </div>
+
+                            <hr>
+
+                            <p class="mb-3">
+                                @review.Comment
+                            </p>
+
+                            <div class="d-flex gap-2">
+
+                                <a asp-action="Edit"
+                                   asp-route-id="@review.ReviewId"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Details"
+                                   asp-route-id="@review.ReviewId"
+                                   class="btn btn-sm btn-outline-secondary">
+                                    View
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            You have not submitted any reviews yet.
+        </div>
+    }
+
+</div>

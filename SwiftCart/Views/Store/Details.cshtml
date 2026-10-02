@@ -1,5 +1,52 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.StoreDetailsViewModel
 @{
+    ViewData["Title"] = Model.Name;
 }
+
+<div class="container py-4">
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            @if (!string.IsNullOrWhiteSpace(Model.LogoUrl))
+            {
+                <img src="@Model.LogoUrl" alt="@Model.Name"
+                     class="img-fluid rounded mb-3"
+                     style="max-height:200px;" />
+            }
+            <h2>@Model.Name</h2>
+            <p class="text-muted">@Model.Location</p>
+            <p>@Model.Description</p>
+            <a asp-controller="Review" asp-action="StoreReviews"
+               asp-route-storeId="@Model.StoreId"
+               class="btn btn-outline-secondary">Read Reviews</a>
+        </div>
+    </div>
+
+    <h3 class="mb-3">Products</h3>
+    <div class="row g-4">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    @if (!string.IsNullOrWhiteSpace(product.ImageUrl))
+                    {
+                        <img src="@product.ImageUrl" alt="@product.Name"
+                             class="card-img-top"
+                             style="height:150px;object-fit:cover;" />
+                    }
+                    <div class="card-body">
+                        <h6>@product.Name</h6>
+                        <p>@product.Price.ToString("C")</p>
+                        <a asp-controller="Product" asp-action="Details"
+                           asp-route-id="@product.ProductId"
+                           class="btn btn-sm btn-outline-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Products.Any())
+    {
+        <p class="text-muted">This store has no available products.</p>
+    }
+</div>

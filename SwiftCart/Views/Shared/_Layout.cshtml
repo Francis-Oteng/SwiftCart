@@ -1,50 +1,1050 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - SwiftCart</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SwiftCart.styles.css" asp-append-version="true" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SwiftCart</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - SwiftCart - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - SwiftCart</title>
+
+    <script type="importmap"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Application CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/SwiftCart.styles.css"
+          asp-append-version="true" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+
+</head>
+
+
+<body>
+
+    <!-- =========================================================
+         SWIFTCART NAVBAR
+         ========================================================= -->
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
+
+            <div class="container-fluid px-4">
+
+
+                <!-- =================================================
+                     SWIFTCART LOGO
+                     ================================================= -->
+
+                <a class="navbar-brand d-flex align-items-center fw-bold"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <span class="text-success fs-4 me-2">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </span>
+
+                    <span class="swiftcart-brand">
+                        Swift<span class="text-success">Cart</span>
+                    </span>
+
+                </a>
+
+
+                <!-- =================================================
+                     MOBILE NAVBAR BUTTON
+                     ================================================= -->
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+
+                <div id="mainNavbar"
+                     class="navbar-collapse collapse">
+
+
+                    <!-- =================================================
+                         LEFT NAVIGATION
+                         ================================================= -->
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                        <!-- =================================================
+                             GUEST MENU
+                             ================================================= -->
+
+                        @if (User.Identity?.IsAuthenticated != true)
+                        {
+
+                            <!-- Home -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-house me-1"></i>
+                                    Home
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Stores -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Store"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-store me-1"></i>
+                                    Stores
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Categories -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Product"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-list me-1"></i>
+                                    Categories
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- About -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="About">
+
+                                    <i class="fa-solid fa-circle-info me-1"></i>
+                                    About
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Help -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Help"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-circle-question me-1"></i>
+                                    Help
+
+                                </a>
+
+                            </li>
+
+                        }
+
+
+                        <!-- =================================================
+                             CUSTOMER MENU
+                             ================================================= -->
+
+                        @if (User.Identity?.IsAuthenticated == true &&
+                             User.IsInRole("Customer"))
+                        {
+
+                            <!-- Home -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Home"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-house me-1"></i>
+                                    Home
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Stores -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Store"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-store me-1"></i>
+                                    Stores
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Categories -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Product"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-layer-group me-1"></i>
+                                    Categories
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- My Orders -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Order"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-receipt me-1"></i>
+                                    My Orders
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Track Order -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Order"
+                                   asp-action="Track">
+
+                                    <i class="fa-solid fa-location-dot me-1"></i>
+                                    Track Order
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Help -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Help"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-circle-question me-1"></i>
+                                    Help
+
+                                </a>
+
+                            </li>
+
+                        }
+
+
+                        <!-- =================================================
+                             STORE OWNER MENU
+                             ================================================= -->
+
+                        @if (User.Identity?.IsAuthenticated == true &&
+                             User.IsInRole("StoreOwner"))
+                        {
+
+                            <!-- Dashboard -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Store"
+                                   asp-action="Dashboard">
+
+                                    <i class="fa-solid fa-chart-line me-1"></i>
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- My Store -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Store"
+                                   asp-action="MyStore">
+
+                                    <i class="fa-solid fa-store me-1"></i>
+                                    My Store
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Products -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Product"
+                                   asp-action="MyProducts">
+
+                                    <i class="fa-solid fa-box-open me-1"></i>
+                                    Products
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Orders -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Store"
+                                   asp-action="Orders">
+
+                                    <i class="fa-solid fa-receipt me-1"></i>
+                                    Orders
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Inventory -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Product"
+                                   asp-action="Inventory">
+
+                                    <i class="fa-solid fa-boxes-stacked me-1"></i>
+                                    Inventory
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Reviews -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Review"
+                                   asp-action="StoreReviews">
+
+                                    <i class="fa-solid fa-star me-1"></i>
+                                    Reviews
+
+                                </a>
+
+                            </li>
+
+                        }
+
+
+                        <!-- =================================================
+                             RIDER MENU
+                             ================================================= -->
+
+                        @if (User.Identity?.IsAuthenticated == true &&
+                             User.IsInRole("Rider"))
+                        {
+
+                            <!-- Dashboard -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Rider"
+                                   asp-action="Dashboard">
+
+                                    <i class="fa-solid fa-gauge-high me-1"></i>
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Available Deliveries -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Rider"
+                                   asp-action="AvailableDeliveries">
+
+                                    <i class="fa-solid fa-motorcycle me-1"></i>
+                                    Available Deliveries
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- My Deliveries -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Rider"
+                                   asp-action="MyDeliveries">
+
+                                    <i class="fa-solid fa-route me-1"></i>
+                                    My Deliveries
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Earnings -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Rider"
+                                   asp-action="Earnings">
+
+                                    <i class="fa-solid fa-money-bill-wave me-1"></i>
+                                    Earnings
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Help -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Help"
+                                   asp-action="Index">
+
+                                    <i class="fa-solid fa-circle-question me-1"></i>
+                                    Help
+
+                                </a>
+
+                            </li>
+
+                        }
+
+
+                        <!-- =================================================
+                             ADMIN MENU
+                             ================================================= -->
+
+                        @if (User.Identity?.IsAuthenticated == true &&
+                             User.IsInRole("Admin"))
+                        {
+
+                            <!-- Dashboard -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Dashboard">
+
+                                    <i class="fa-solid fa-gauge-high me-1"></i>
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Users -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Users">
+
+                                    <i class="fa-solid fa-users me-1"></i>
+                                    Users
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Stores -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Stores">
+
+                                    <i class="fa-solid fa-store me-1"></i>
+                                    Stores
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Riders -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Riders">
+
+                                    <i class="fa-solid fa-motorcycle me-1"></i>
+                                    Riders
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Orders -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Orders">
+
+                                    <i class="fa-solid fa-receipt me-1"></i>
+                                    Orders
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Categories -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Categories">
+
+                                    <i class="fa-solid fa-layer-group me-1"></i>
+                                    Categories
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Reports -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Admin"
+                                   asp-action="Reports">
+
+                                    <i class="fa-solid fa-chart-column me-1"></i>
+                                    Reports
+
+                                </a>
+
+                            </li>
+
+                        }
+
+                    </ul>
+
+
+                    <!-- =================================================
+                         RIGHT SIDE NAVIGATION
+                         ================================================= -->
+
+                    <ul class="navbar-nav align-items-center">
+
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+
+                            <!-- Notifications -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link position-relative"
+                                   asp-controller="Notification"
+                                   asp-action="Index"
+                                   title="Notifications">
+
+                                    <i class="fa-solid fa-bell fs-5"></i>
+
+                                    <!-- Notification badge -->
+
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                                        0
+
+                                    </span>
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Customer Cart -->
+
+                            @if (User.IsInRole("Customer"))
+                            {
+
+                                <li class="nav-item">
+
+                                    <a class="nav-link position-relative"
+                                       asp-controller="Cart"
+                                       asp-action="Index"
+                                       title="Shopping Cart">
+
+                                        <i class="fa-solid fa-cart-shopping fs-5"></i>
+
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+
+                                            0
+
+                                        </span>
+
+                                    </a>
+
+                                </li>
+
+                            }
+
+
+                            <!-- User Dropdown -->
+
+                            <li class="nav-item dropdown ms-2">
+
+                                <a class="nav-link dropdown-toggle d-flex align-items-center"
+                                   href="#"
+                                   role="button"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+
+                                    <span class="user-avatar me-2">
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                    </span>
+
+                                    <span>
+                                        @User.Identity.Name
+                                    </span>
+
+                                </a>
+
+
+                                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+
+
+                                    <!-- Profile -->
+
+                                    @if (User.IsInRole("Customer"))
+                                    {
+
+                                        <li>
+
+                                            <a class="dropdown-item"
+                                               asp-controller="Customer"
+                                               asp-action="Profile">
+
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                My Profile
+
+                                            </a>
+
+                                        </li>
+
+                                    }
+
+
+                                    @if (User.IsInRole("StoreOwner"))
+                                    {
+
+                                        <li>
+
+                                            <a class="dropdown-item"
+                                               asp-controller="Store"
+                                               asp-action="MyStore">
+
+                                                <i class="fa-solid fa-store me-2"></i>
+                                                My Store
+
+                                            </a>
+
+                                        </li>
+
+                                    }
+
+
+                                    @if (User.IsInRole("Rider"))
+                                    {
+
+                                        <li>
+
+                                            <a class="dropdown-item"
+                                               asp-controller="Rider"
+                                               asp-action="Profile">
+
+                                                <i class="fa-solid fa-user me-2"></i>
+                                                Rider Profile
+
+                                            </a>
+
+                                        </li>
+
+                                    }
+
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+
+                                        <li>
+
+                                            <a class="dropdown-item"
+                                               asp-controller="Admin"
+                                               asp-action="Dashboard">
+
+                                                <i class="fa-solid fa-shield-halved me-2"></i>
+                                                Admin Panel
+
+                                            </a>
+
+                                        </li>
+
+                                    }
+
+
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+
+
+                                    <!-- Logout -->
+
+                                    <li>
+
+                                        <form asp-controller="Account"
+                                              asp-action="Logout"
+                                              method="post">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <button type="submit"
+                                                    class="dropdown-item text-danger">
+
+                                                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                                Logout
+
+                                            </button>
+
+                                        </form>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                        }
+                        else
+                        {
+
+                            <!-- Login -->
+
+                            <li class="nav-item">
+
+                                <a class="nav-link"
+                                   asp-controller="Account"
+                                   asp-action="Login">
+
+                                    <i class="fa-solid fa-right-to-bracket me-1"></i>
+                                    Login
+
+                                </a>
+
+                            </li>
+
+
+                            <!-- Register -->
+
+                            <li class="nav-item ms-lg-2">
+
+                                <a class="btn btn-success px-3"
+                                   asp-controller="Account"
+                                   asp-action="Register">
+
+                                    <i class="fa-solid fa-user-plus me-1"></i>
+                                    Get Started
+
+                                </a>
+
+                            </li>
+
+                        }
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================================
+         MAIN CONTENT
+         ========================================================= -->
+
+    <main role="main">
+
+        @RenderBody()
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
+    <footer class="border-top bg-light mt-5">
+
+        <div class="container py-5">
+
+            <div class="row">
+
+
+                <!-- SwiftCart -->
+
+                <div class="col-md-4 mb-4">
+
+                    <h5 class="fw-bold">
+
+                        <i class="fa-solid fa-cart-shopping text-success me-2"></i>
+
+                        SwiftCart
+
+                    </h5>
+
+                    <p class="text-muted">
+
+                        Fresh groceries delivered quickly
+                        and conveniently to your doorstep.
+
+                    </p>
+
+                </div>
+
+
+                <!-- Quick Links -->
+
+                <div class="col-md-2 mb-4">
+
+                    <h6 class="fw-bold">
+                        Quick Links
+                    </h6>
+
+                    <ul class="list-unstyled">
+
+                        <li class="mb-2">
+
+                            <a asp-controller="Home"
+                               asp-action="Index"
+                               class="text-decoration-none text-muted">
+
+                                Home
+
+                            </a>
+
+                        </li>
+
+                        <li class="mb-2">
+
+                            <a asp-controller="Store"
+                               asp-action="Index"
+                               class="text-decoration-none text-muted">
+
+                                Stores
+
+                            </a>
+
+                        </li>
+
+                        <li class="mb-2">
+
+                            <a asp-controller="Product"
+                               asp-action="Index"
+                               class="text-decoration-none text-muted">
+
+                                Products
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Support -->
+
+                <div class="col-md-3 mb-4">
+
+                    <h6 class="fw-bold">
+                        Support
+                    </h6>
+
+                    <ul class="list-unstyled">
+
+                        <li class="mb-2">
+
+                            <a asp-controller="Help"
+                               asp-action="Index"
+                               class="text-decoration-none text-muted">
+
+                                Help Centre
+
+                            </a>
+
+                        </li>
+
+                        <li class="mb-2">
+
+                            <a asp-controller="Home"
+                               asp-action="Privacy"
+                               class="text-decoration-none text-muted">
+
+                                Privacy Policy
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- Contact -->
+
+                <div class="col-md-3 mb-4">
+
+                    <h6 class="fw-bold">
+                        Contact Us
+                    </h6>
+
+                    <p class="text-muted mb-1">
+
+                        <i class="fa-solid fa-envelope me-2"></i>
+                        support@swiftcart.com
+
+                    </p>
+
+                    <p class="text-muted">
+
+                        <i class="fa-solid fa-phone me-2"></i>
+                        +233 50-485-5702
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <hr />
+
+
+            <div class="text-center text-muted">
+
+                &copy; @DateTime.Now.Year
+                <strong>SwiftCart</strong>.
+                All rights reserved.
+
+            </div>
+
         </div>
+
     </footer>
+
+
+    <!-- =========================================================
+         SCRIPTS
+         ========================================================= -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
+
 </html>
+

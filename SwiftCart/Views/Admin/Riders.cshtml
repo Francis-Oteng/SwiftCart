@@ -1,5 +1,103 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SwiftCart.ViewModels.AdminRidersViewModel
+
 @{
+    ViewData["Title"] = "Riders";
 }
+
+<div class="container-fluid py-4">
+
+    <h2 class="mb-4">Riders</h2>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover mb-0">
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Vehicle</th>
+                            <th>Vehicle Number</th>
+                            <th>Availability</th>
+                            <th>Approval</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var rider in Model.Riders)
+                        {
+                            <tr>
+
+                                <td>@rider.Name</td>
+
+                                <td>@rider.VehicleType</td>
+
+                                <td>@rider.VehicleNumber</td>
+
+                                <td>
+                                    @if (rider.IsAvailable)
+                                    {
+                                        <span class="badge bg-success">
+                                            Available
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">
+                                            Unavailable
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        @rider.ApprovalStatus
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <a asp-action="RiderDetails"
+                                       asp-route-id="@rider.RiderId"
+                                       class="btn btn-sm btn-outline-primary">
+                                        View
+                                    </a>
+
+                                    @if (rider.CanApprove)
+                                    {
+                                        <form asp-action="ApproveRider"
+                                              method="post"
+                                              class="d-inline">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@rider.RiderId">
+
+                                            <button class="btn btn-sm btn-success">
+                                                Approve
+                                            </button>
+
+                                        </form>
+                                    }
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewData["Title"] = "About SwiftCart";
+}
+
+<div class="container py-5">
+
+    <!-- Hero -->
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-7">
+            <span class="badge bg-success-subtle text-success px-3 py-2 mb-3">
+                About SwiftCart
+            </span>
+
+            <h1 class="display-4 fw-bold mb-3">
+                Groceries delivered
+                <span class="text-success">swiftly.</span>
+            </h1>
+
+            <p class="lead text-muted">
+                SwiftCart is an on-demand grocery delivery platform that makes it
+                easy to discover local stores, shop for groceries, and have your
+                orders delivered conveniently to your doorstep.
+            </p>
+
+            <a asp-controller="Store"
+               asp-action="Index"
+               class="btn btn-success btn-lg px-4">
+                <i class="fa-solid fa-store me-2"></i>
+                Browse Stores
+            </a>
+        </div>
+
+        <div class="col-lg-5 text-center mt-4 mt-lg-0">
+            <div class="bg-success-subtle rounded-4 p-5">
+                <i class="fa-solid fa-basket-shopping text-success"
+                   style="font-size: 100px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- What We Do -->
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">What is SwiftCart?</h2>
+        <p class="text-muted mx-auto" style="max-width: 750px;">
+            SwiftCart connects customers with local grocery stores and delivery
+            riders through one convenient platform.
+        </p>
+    </div>
+
+    <div class="row g-4 mb-5">
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-4 text-center">
+                <div class="mb-3">
+                    <i class="fa-solid fa-store text-success fs-1"></i>
+                </div>
+                <h4 class="fw-bold">Local Stores</h4>
+                <p class="text-muted">
+                    Discover products from participating local stores and
+                    conveniently shop from them online.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-4 text-center">
+                <div class="mb-3">
+                    <i class="fa-solid fa-cart-shopping text-success fs-1"></i>
+                </div>
+                <h4 class="fw-bold">Easy Shopping</h4>
+                <p class="text-muted">
+                    Search for groceries, add products to your cart and complete
+                    your order through a simple checkout experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100 p-4 text-center">
+                <div class="mb-3">
+                    <i class="fa-solid fa-motorcycle text-success fs-1"></i>
+                </div>
+                <h4 class="fw-bold">Fast Delivery</h4>
+                <p class="text-muted">
+                    Track your order and stay informed while a delivery rider
+                    brings your groceries to you.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- How It Works -->
+    <div class="bg-light rounded-4 p-5 mb-5">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">How SwiftCart Works</h2>
+            <p class="text-muted">
+                Getting your groceries delivered is simple.
+            </p>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-md-3 text-center">
+                <div class="fs-2 fw-bold text-success mb-2">01</div>
+                <h5 class="fw-bold">Choose a Store</h5>
+                <p class="text-muted small">
+                    Browse available stores and find the products you need.
+                </p>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="fs-2 fw-bold text-success mb-2">02</div>
+                <h5 class="fw-bold">Shop</h5>
+                <p class="text-muted small">
+                    Add your favorite groceries and household products to your cart.
+                </p>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="fs-2 fw-bold text-success mb-2">03</div>
+                <h5 class="fw-bold">Checkout</h5>
+                <p class="text-muted small">
+                    Confirm your delivery address and place your order.
+                </p>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="fs-2 fw-bold text-success mb-2">04</div>
+                <h5 class="fw-bold">Get Delivered</h5>
+                <p class="text-muted small">
+                    Track your order while your rider delivers it to you.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center py-4">
+        <h2 class="fw-bold">Ready to shop?</h2>
+        <p class="text-muted">
+            Find your favorite groceries and get them delivered with SwiftCart.
+        </p>
+
+        <a asp-controller="Store"
+           asp-action="Index"
+           class="btn btn-success px-4 py-2">
+            Start Shopping
+        </a>
+    </div>
+
+</div>
+

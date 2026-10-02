@@ -1,0 +1,71 @@
+﻿@model SwiftCart.ViewModels.ReviewDetailsViewModel
+
+@{
+    ViewData["Title"] = "Review Details";
+}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <h3>@Model.StoreName</h3>
+
+                            <p class="text-muted mb-0">
+                                @Model.CustomerName
+                            </p>
+
+                        </div>
+
+                        <small class="text-muted">
+                            @Model.CreatedDate
+                        </small>
+
+                    </div>
+
+                    <div class="text-warning my-3">
+
+                        @for (var i = 1; i <= Model.Rating; i++)
+                        {
+                            <i class="fas fa-star"></i>
+                        }
+
+                    </div>
+
+                    <p class="lead">
+                        @Model.Comment
+                    </p>
+
+                    @if (Model.CanEdit)
+                    {
+                        <a asp-action="Edit"
+                           asp-route-id="@Model.ReviewId"
+                           class="btn btn-primary">
+                            Edit Review
+                        </a>
+                    }
+
+                    <a asp-action="MyReviews"
+                       class="btn btn-outline-secondary">
+                        Back
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

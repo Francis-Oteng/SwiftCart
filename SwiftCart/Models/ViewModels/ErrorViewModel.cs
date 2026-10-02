@@ -1,4 +1,4 @@
-namespace SwiftCart.Models
+namespace SwiftCart.Models.ViewModels
 {
     public class ErrorViewModel
     {

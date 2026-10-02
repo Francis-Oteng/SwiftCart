@@ -1,0 +1,42 @@
+﻿@model SwiftCart.ViewModels.NotificationDetailsViewModel
+
+@{
+    ViewData["Title"] = "Notification";
+}
+
+<div class="container py-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+
+                <div class="card-body p-4">
+
+                    <h3>@Model.Title</h3>
+
+                    <p class="text-muted">
+                        @Model.CreatedDate
+                    </p>
+
+                    <hr>
+
+                    <p>
+                        @Model.Message
+                    </p>
+
+                    <a asp-action="Index"
+                       class="btn btn-outline-secondary">
+                        Back to Notifications
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

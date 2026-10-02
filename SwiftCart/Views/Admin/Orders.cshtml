@@ -1,5 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+@model SwiftCart.ViewModels.AdminOrdersViewModel
+
 @{
+    ViewData["Title"] = "Orders";
 }
+
+<div class="container-fluid py-4">
+
+    <h2 class="mb-4">Orders</h2>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+
+                <table class="table table-hover mb-0">
+
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Store</th>
+                            <th>Rider</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var order in Model.Orders)
+                        {
+                            <tr>
+
+                                <td>@order.OrderNumber</td>
+                                <td>@order.CustomerName</td>
+                                <td>@order.StoreName</td>
+                                <td>@order.RiderName</td>
+                                <td>@order.Total.ToString("C")</td>
+
+                                <td>
+                                    <span class="badge bg-secondary">
+                                        @order.Status
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a asp-action="OrderDetails"
+                                       asp-route-id="@order.OrderId"
+                                       class="btn btn-sm btn-outline-primary">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+</div>

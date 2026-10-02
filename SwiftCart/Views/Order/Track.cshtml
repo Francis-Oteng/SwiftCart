@@ -1,0 +1,53 @@
+﻿@model SwiftCart.ViewModels.OrderTrackingViewModel
+@{
+    ViewData["Title"] = "Track Order";
+}
+
+<div class="container py-4">
+    <h2>Track Order</h2>
+    <p class="text-muted">@Model.OrderNumber</p>
+
+    <div class="card shadow-sm"><div class="card-body">
+        <h5>Current Status: @Model.Status</h5>
+        <p>Delivery address: @Model.DeliveryAddress</p>
+
+        @foreach (var step in Model.Steps)
+        {
+            <div class="d-flex gap-3 mb-4">
+                <div>
+                    @if (step.IsCompleted)
+                    {
+                        <i class="fas fa-check-circle fa-lg text-success"></i>
+                    }
+                    else if (step.IsCurrent)
+                    {
+                        <i class="fas fa-circle-dot fa-lg text-primary"></i>
+                    }
+                    else
+                    {
+                        <i class="far fa-circle fa-lg text-secondary"></i>
+                    }
+                </div>
+                <div>
+                    <strong>@step.Title</strong>
+                    @if (!string.IsNullOrWhiteSpace(step.Description))
+                    {
+                        <p class="text-muted mb-1">@step.Description</p>
+                    }
+                    @if (step.Timestamp.HasValue)
+                    {
+                        <small class="text-muted">@step.Timestamp</small>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.DeliveryId.HasValue)
+        {
+            <a asp-controller="Delivery" asp-action="Track"
+               asp-route-id="@Model.DeliveryId" class="btn btn-outline-primary">
+                View Delivery Tracking
+            </a>
+        }
+    </div></div>
+</div>
