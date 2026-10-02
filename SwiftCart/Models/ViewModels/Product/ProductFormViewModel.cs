@@ -43,7 +43,7 @@ namespace SwiftCart.Models.ViewModels.Product
         public string Name { get; set; } = string.Empty;
     }
 
-    public class   StoreOptionViewModel
+    public class StoreOptionViewModel
     {
         public int StoreId { get; set; }
         public string Name { get; set; } = string.Empty;

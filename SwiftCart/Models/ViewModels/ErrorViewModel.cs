@@ -1,9 +1,18 @@
-namespace SwiftCart.Models.ViewModels
+
+// ViewModels/Error/ErrorViewModel.cs
+
+namespace SwiftCart.ViewModels.Error
 {
     public class ErrorViewModel
     {
         public string? RequestId { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public bool ShowRequestId =>
+            !string.IsNullOrEmpty(RequestId);
+
+        public int? StatusCode { get; set; }
+
+        public string? Message { get; set; }
     }
 }
+

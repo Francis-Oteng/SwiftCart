@@ -1,9 +1,5 @@
 ﻿// ViewModels/Order/OrderDetailsViewModel.cs
 
-using SwiftCart.Models;
-using SwiftCart.ViewModels.Account;
-using SwiftCart.ViewModels.Cart.CartViewModels;
-
 namespace SwiftCart.Models.ViewModels.Order
 {
     public class OrderDetailsViewModel
