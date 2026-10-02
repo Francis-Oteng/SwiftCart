@@ -1,5 +1,4 @@
-﻿```csharp
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace SwiftCart.Models
 {
@@ -40,4 +39,4 @@ namespace SwiftCart.Models
         public ApplicationUser User { get; set; } = null!;
     }
 }
-```
+

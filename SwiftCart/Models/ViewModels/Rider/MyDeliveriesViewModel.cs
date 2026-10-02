@@ -14,4 +14,4 @@ namespace SwiftCart.ViewModels.Rider
         public string? SearchTerm { get; set; }
     }
 }
-```
+

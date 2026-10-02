@@ -1,5 +1,4 @@
-﻿```csharp
-namespace SwiftCart.Models
+﻿namespace SwiftCart.Models
 {
     public class Cart
     {
@@ -17,4 +16,4 @@ namespace SwiftCart.Models
             = new List<CartItem>();
     }
 }
-```
+

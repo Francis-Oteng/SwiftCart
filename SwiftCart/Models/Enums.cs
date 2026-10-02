@@ -1,5 +1,4 @@
-﻿```csharp
-namespace SwiftCart.Models
+﻿namespace SwiftCart.Models
 {
     public enum UserRole
     {
@@ -103,4 +102,4 @@ namespace SwiftCart.Models
         System = 6
     }
 }
-```
+

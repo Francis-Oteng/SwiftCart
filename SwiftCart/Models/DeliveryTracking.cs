@@ -7,7 +7,7 @@ namespace SwiftCart.Models
     {
         public int DeliveryTrackingId { get; set; }
 
-```
+
     public int DeliveryId { get; set; }
 
         public Delivery Delivery { get; set; } = null!;
@@ -25,9 +25,7 @@ namespace SwiftCart.Models
 
         public DateTime RecordedDate { get; set; } = DateTime.UtcNow;
     }
-```
+
 
 }
 
-```
-```

@@ -1,5 +1,4 @@
-﻿```csharp
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 
 namespace SwiftCart.Models
 {
@@ -41,4 +40,4 @@ namespace SwiftCart.Models
             = new List<Notification>();
     }
 }
-```
+
