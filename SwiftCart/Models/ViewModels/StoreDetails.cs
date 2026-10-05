@@ -6,10 +6,13 @@ namespace SwiftCart.ViewModels.Store
     {
         public int StoreId { get; set; }
         public string StoreName { get; set; } = string.Empty;
+        public string Name => StoreName;
         public string? Description { get; set; }
         public string? LogoUrl { get; set; }
 
         public string Address { get; set; } = string.Empty;
+
+        public string Location => Address;
 
         public double Rating { get; set; }
 
@@ -37,4 +40,3 @@ namespace SwiftCart.ViewModels.Store
         public string Name { get; set; } = string.Empty;
     }
 }
-

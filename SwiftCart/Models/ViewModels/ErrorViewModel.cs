@@ -1,7 +1,7 @@
 
 // ViewModels/Error/ErrorViewModel.cs
 
-namespace SwiftCart.ViewModels.Error
+namespace SwiftCart.Models
 {
     public class ErrorViewModel
     {
@@ -15,4 +15,3 @@ namespace SwiftCart.ViewModels.Error
         public string? Message { get; set; }
     }
 }
-

@@ -16,6 +16,8 @@ namespace SwiftCart.Models.ViewModels.Cart
 
         public int Quantity { get; set; }
 
+        public int AvailableStock { get; set; }
+
         public decimal Subtotal { get; set; }
     }
 }

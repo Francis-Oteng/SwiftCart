@@ -2,6 +2,8 @@
 
 namespace SwiftCart.Models.ViewModels.Product
 {
+    using Microsoft.AspNetCore.Mvc.Rendering;
+
     public class ProductListViewModel
     {
         public string? Search { get; set; }
@@ -23,8 +25,8 @@ namespace SwiftCart.Models.ViewModels.Product
         public IEnumerable<ProductListItemViewModel> Products { get; set; }
             = new List<ProductListItemViewModel>();
 
-        public IEnumerable<CategoryOptionViewModel> CategoryOptions { get; set; }
-            = new List<CategoryOptionViewModel>();
+        public IEnumerable<SelectListItem> CategoryOptions { get; set; }
+            = new List<SelectListItem>();
     }
 
     public class ProductListItemViewModel
@@ -40,11 +42,5 @@ namespace SwiftCart.Models.ViewModels.Product
 
         public bool IsAvailable { get; set; }
         public string Status { get; set; } = string.Empty;
-    }
-
-    public class CategoryOptionViewModel
-    {
-        public int CategoryId { get; set; }
-        public string Name { get; set; } = string.Empty;
     }
 }

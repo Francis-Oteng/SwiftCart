@@ -7,6 +7,7 @@ namespace SwiftCart.ViewModels.Rider
     public class RiderProfileViewModel
     {
         public string RiderName { get; set; } = string.Empty;
+        public string FullName => RiderName;
 
         public string? PhoneNumber { get; set; }
 
@@ -22,7 +23,8 @@ namespace SwiftCart.ViewModels.Rider
 
         public RiderApprovalStatus ApprovalStatus { get; set; }
 
+        public bool IsApproved => ApprovalStatus == RiderApprovalStatus.Approved;
+
         public bool IsAvailable { get; set; }
     }
 }
-

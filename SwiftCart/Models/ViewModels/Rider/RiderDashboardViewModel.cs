@@ -18,9 +18,17 @@ namespace SwiftCart.ViewModels.Rider
             = new List<DeliveryViewModel>();
 
         public DeliveryViewModel? CurrentDelivery { get; set; }
+
+        public DeliveryViewModel? ActiveDelivery => CurrentDelivery;
+
+        public int AvailableDeliveriesCount => AvailableDeliveries.Count();
+
+        public int TodayDeliveriesCount => TodayDeliveries;
+
+        public IEnumerable<DeliveryViewModel> RecentDeliveries { get; set; }
+            = new List<DeliveryViewModel>();
     }
 }
-
 
 
 

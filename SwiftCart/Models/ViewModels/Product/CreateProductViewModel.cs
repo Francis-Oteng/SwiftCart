@@ -42,4 +42,10 @@ namespace SwiftCart.Models.ViewModels.Product
         public int StoreId { get; set; }
         public string Name { get; set; } = string.Empty;
     }
+
+    public class CategoryOptionViewModel
+    {
+        public int CategoryId { get; set; }
+        public string Name { get; set; } = string.Empty;
+    }
 }

@@ -2,11 +2,14 @@
 
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SwiftCart.Models.ViewModels.Product
 {
     public class ProductFormViewModel
     {
+        public int ProductId { get; set; }
+
         [Required]
         [StringLength(200)]
         public string Name { get; set; } = string.Empty;
@@ -23,30 +26,18 @@ namespace SwiftCart.Models.ViewModels.Product
         [Required]
         public int CategoryId { get; set; }
 
-        public IEnumerable<CategoryOptionViewModel> CategoryOptions { get; set; }
-            = new List<CategoryOptionViewModel>();
+        public IEnumerable<SelectListItem> CategoryOptions { get; set; }
+            = new List<SelectListItem>();
 
         [Required]
         public int StoreId { get; set; }
 
-        public IEnumerable<StoreOptionViewModel> StoreOptions { get; set; }
-            = new List<StoreOptionViewModel>();
+        public IEnumerable<SelectListItem> StoreOptions { get; set; }
+            = new List<SelectListItem>();
 
         public IFormFile? ImageFile { get; set; }
 
         public bool IsAvailable { get; set; } = true;
     }
 
-    public class CategoryOptionViewModel
-    {
-        public int CategoryId { get; set; }
-        public string Name { get; set; } = string.Empty;
-    }
-
-    public class StoreOptionViewModel
-    {
-        public int StoreId { get; set; }
-        public string Name { get; set; } = string.Empty;
-    }
 }
-

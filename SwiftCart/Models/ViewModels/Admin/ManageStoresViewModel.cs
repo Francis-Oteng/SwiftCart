@@ -20,9 +20,13 @@ namespace SwiftCart.ViewModels.Admin
     {
         public int StoreId { get; set; }
         public string Name { get; set; } = string.Empty;
+        public string StoreName => Name;
         public string OwnerName { get; set; } = string.Empty;
         public string Location { get; set; } = string.Empty;
         public StoreStatus Status { get; set; }
         public DateTime CreatedDate { get; set; }
+        public bool CanApprove => Status == StoreStatus.Pending;
+        public bool CanReject => Status == StoreStatus.Pending;
+        public bool CanSuspend => Status == StoreStatus.Approved;
     }
 }

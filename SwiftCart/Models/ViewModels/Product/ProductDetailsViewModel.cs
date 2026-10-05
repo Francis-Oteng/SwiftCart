@@ -19,8 +19,12 @@ namespace SwiftCart.Models.ViewModels.Product
         public ProductStoreViewModel Store { get; set; }
             = new ProductStoreViewModel();
 
+        public string StoreName => Store.Name;
+
         public ProductCategoryViewModel Category { get; set; }
             = new ProductCategoryViewModel();
+
+        public string CategoryName => Category.Name;
 
         public double Rating { get; set; }
 

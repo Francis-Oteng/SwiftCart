@@ -5,6 +5,7 @@ namespace SwiftCart.Models.ViewModels.Customer
     public class CustomerDashboardViewModel
     {
         public string CustomerName { get; set; } = string.Empty;
+        public string FullName => CustomerName;
 
         public string? ProfileImageUrl { get; set; }
 
@@ -19,6 +20,8 @@ namespace SwiftCart.Models.ViewModels.Customer
             = new List<FavoriteStoreViewModel>();
 
         public int UnreadNotifications { get; set; }
+
+        public int AddressCount { get; set; }
     }
 
     public class CustomerOrderSummaryViewModel
@@ -38,7 +41,6 @@ namespace SwiftCart.Models.ViewModels.Customer
         public string? LogoUrl { get; set; }
     }
 }
-
 
 
 
