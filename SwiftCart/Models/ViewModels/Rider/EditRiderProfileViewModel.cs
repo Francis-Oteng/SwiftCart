@@ -24,9 +24,10 @@ namespace SwiftCart.ViewModels.Rider
         [StringLength(100)]
         public string? VehicleDescription { get; set; }
 
+        public bool IsAvailable { get; set; }
+
         public string? ExistingProfilePhotoUrl { get; set; }
 
         public IFormFile? ProfilePhoto { get; set; }
     }
 }
-

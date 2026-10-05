@@ -26,6 +26,8 @@ namespace SwiftCart.ViewModels.Admin
 
         public string StoreName { get; set; } = string.Empty;
 
+        public string RiderName { get; set; } = string.Empty;
+
         public decimal Total { get; set; }
 
         public OrderStatus Status { get; set; }
@@ -35,4 +37,3 @@ namespace SwiftCart.ViewModels.Admin
         public DateTime CreatedDate { get; set; }
     }
 }
-

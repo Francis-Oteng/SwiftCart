@@ -12,6 +12,12 @@ namespace SwiftCart.ViewModels.Admin
 
         public string? SearchTerm { get; set; }
 
+        public string? Search
+        {
+            get => SearchTerm;
+            set => SearchTerm = value;
+        }
+
         public UserRole? Role { get; set; }
 
         public bool? IsActive { get; set; }

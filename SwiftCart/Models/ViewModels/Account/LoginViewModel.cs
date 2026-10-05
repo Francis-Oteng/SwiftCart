@@ -16,5 +16,7 @@ namespace SwiftCart.Models.ViewModels.Account
 
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
+
+        public string? ReturnUrl { get; set; }
     }
 }

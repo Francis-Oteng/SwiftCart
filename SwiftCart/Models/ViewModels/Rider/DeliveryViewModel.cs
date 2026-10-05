@@ -20,6 +20,12 @@ namespace SwiftCart.ViewModels.Rider
 
         public DeliveryStatus DeliveryStatus { get; set; }
 
+        public string Status => DeliveryStatus.ToString();
+
+        public int ItemCount { get; set; }
+
+        public DateTime? AssignedAt { get; set; }
+
         public double Distance { get; set; }
 
         public decimal DeliveryFee { get; set; }

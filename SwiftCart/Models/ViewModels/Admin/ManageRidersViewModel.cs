@@ -18,10 +18,11 @@ namespace SwiftCart.ViewModels.Admin
     {
         public int RiderId { get; set; }
         public string RiderName { get; set; } = string.Empty;
+        public string Name => RiderName;
         public string VehicleNumber { get; set; } = string.Empty;
         public VehicleType VehicleType { get; set; }
         public RiderApprovalStatus ApprovalStatus { get; set; }
         public bool IsAvailable { get; set; }
+        public bool CanApprove => ApprovalStatus == RiderApprovalStatus.Pending;
     }
 }
-

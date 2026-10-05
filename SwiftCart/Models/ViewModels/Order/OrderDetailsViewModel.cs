@@ -29,9 +29,13 @@ namespace SwiftCart.Models.ViewModels.Order
 
         public decimal TotalAmount { get; set; }
 
+        public decimal Total => TotalAmount;
+
         public PaymentStatus PaymentStatus { get; set; }
 
         public OrderStatus OrderStatus { get; set; }
+
+        public OrderStatus Status => OrderStatus;
 
         public OrderAddressViewModel DeliveryAddress { get; set; }
             = new OrderAddressViewModel();
@@ -87,5 +91,7 @@ namespace SwiftCart.Models.ViewModels.Order
         public decimal UnitPrice { get; set; }
 
         public decimal Subtotal { get; set; }
+
+        public decimal Total => Subtotal;
     }
 }
