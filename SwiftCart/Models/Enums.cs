@@ -14,7 +14,8 @@
         Approved = 1,
         Rejected = 2,
         Suspended = 3,
-        Closed = 4
+        Closed = 4,
+        Open = 5
     }
 
     public enum ProductStatus

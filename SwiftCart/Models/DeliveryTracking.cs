@@ -24,6 +24,8 @@ namespace SwiftCart.Models
         public string? Note { get; set; }
 
         public DateTime RecordedDate { get; set; } = DateTime.UtcNow;
+
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 
 

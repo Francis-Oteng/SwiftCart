@@ -28,7 +28,11 @@ namespace SwiftCart.Models
 
         public string? LogoUrl { get; set; }
 
+        // Store approval/status
         public StoreStatus Status { get; set; } = StoreStatus.Pending;
+
+        // Whether the store is currently accepting orders
+        public bool IsOpen { get; set; } = false;
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
@@ -53,4 +57,3 @@ namespace SwiftCart.Models
             = new List<Review>();
     }
 }
-

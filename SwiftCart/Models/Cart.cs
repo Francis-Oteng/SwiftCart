@@ -12,8 +12,7 @@
 
         public DateTime UpdatedDate { get; set; } = DateTime.UtcNow;
 
-        public ICollection<CartItem> Items { get; set; }
+        public ICollection<CartItem> CartItems { get; set; }
             = new List<CartItem>();
     }
 }
-
