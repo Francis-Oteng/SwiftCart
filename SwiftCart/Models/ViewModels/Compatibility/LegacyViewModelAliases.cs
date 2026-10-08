@@ -95,10 +95,7 @@ namespace SwiftCart.Models.ViewModels
     public class ReviewDetailsViewModel : SwiftCart.ViewModels.Review.ReviewDetailsViewModel { }
     public class StoreReviewsViewModel : SwiftCart.ViewModels.Review.StoreReviewsViewModel { }
 
-    public class NotificationListViewModel
-    {
-        public IEnumerable<NotificationItemViewModel> Notifications { get; set; } = new List<NotificationItemViewModel>();
-    }
+   
 
     public class NotificationItemViewModel
     {

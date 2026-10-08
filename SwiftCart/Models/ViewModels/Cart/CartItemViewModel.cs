@@ -1,12 +1,9 @@
-﻿// ViewModels/Cart/CartItemViewModel.cs
-
+﻿
 namespace SwiftCart.Models.ViewModels.Cart
 {
     public class CartItemViewModel
     {
         public int CartItemId { get; set; }
-
-        public int ProductId { get; set; }
 
         public string ProductName { get; set; } = string.Empty;
 
@@ -18,6 +15,7 @@ namespace SwiftCart.Models.ViewModels.Cart
 
         public int AvailableStock { get; set; }
 
-        public decimal Subtotal { get; set; }
+        public decimal Subtotal => UnitPrice * Quantity;
     }
 }
+

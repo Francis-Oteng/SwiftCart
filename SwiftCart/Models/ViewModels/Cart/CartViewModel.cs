@@ -1,4 +1,4 @@
-﻿// ViewModels/Cart/CartViewModel.cs
+﻿using System.Collections.Generic;
 
 namespace SwiftCart.Models.ViewModels.Cart
 {
