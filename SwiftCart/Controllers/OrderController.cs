@@ -23,10 +23,10 @@ namespace SwiftCart.Controllers
         }
 
         // GET: /Order
-       
-       
-      [HttpGet]
-      public async Task<IActionResult> Index()
+
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
             var userId = _userManager.GetUserId(User);
 
@@ -238,6 +238,7 @@ namespace SwiftCart.Controllers
         }
 
         // GET: /Order/History
+
         [HttpGet]
         public async Task<IActionResult> History()
         {
@@ -260,6 +261,9 @@ namespace SwiftCart.Controllers
                     new OrderSummaryViewModel
                     {
                         OrderId = order.OrderId,
+
+                        OrderNumber = $"ORD-{order.OrderId:D6}",
+
                         CreatedDate = order.CreatedDate
                     }).ToList()
             };
