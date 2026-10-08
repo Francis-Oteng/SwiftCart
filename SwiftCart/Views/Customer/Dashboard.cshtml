@@ -1,68 +1,134 @@
-﻿@using SwiftCart.Models.ViewModels.Customer;
-@model SwiftCart.Models.ViewModels.Customer.DashboardViewModel
+﻿@model SwiftCart.Models.ViewModels.Customer.CustomerProfileViewModel
+
 @{
     ViewData["Title"] = "Customer Dashboard";
 }
 
 <div class="container py-4">
-    <h2>Welcome, @Model.FullName</h2>
-    <p class="text-muted">Your SwiftCart account overview.</p>
 
-    <div class="row g-3 my-3">
-        <div class="col-md-4">
-            <div class="card shadow-sm"><div class="card-body">
-                <h6>Orders</h6><h3>@Model.TotalOrders</h3>
-                <a asp-controller="Order" asp-action="Index">View orders</a>
-            </div></div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm"><div class="card-body">
-                <h6>Active Orders</h6><h3>@Model.ActiveOrders</h3>
-                <a asp-controller="Order" asp-action="Track">Track order</a>
-            </div></div>
-        </div>
-        <div class="col-md-4">
-            <div class="card shadow-sm"><div class="card-body">
-                <h6>Saved Addresses</h6><h3>@Model.AddressCount</h3>
-                <a asp-action="Addresses">Manage addresses</a>
-            </div></div>
-        </div>
+    <!-- Welcome -->
+    <div class="mb-4">
+        <h2>Welcome, @Model.FullName</h2>
+        <p class="text-muted">
+            Your SwiftCart account overview.
+        </p>
     </div>
 
-    <div class="card shadow-sm">
-        <div class="card-header">Recent Orders</div>
-        <div class="card-body p-0">
-            @if (Model.RecentOrders.Any())
-            {
-                <div class="table-responsive">
-                    <table class="table mb-0">
-                        <thead><tr><th>Order</th><th>Date</th><th>Total</th><th>Status</th><th></th></tr></thead>
-                        <tbody>
-                        @foreach (var order in Model.RecentOrders)
-                        {
-                            <tr>
-                                <td>@order.OrderNumber</td>
-                                <td>@order.CreatedDate</td>
-                                <td>@order.Total.ToString("C")</td>
-                                <td>@order.Status</td>
-                                <td><a asp-controller="Order" asp-action="Details"
-                                       asp-route-id="@order.OrderId">View</a></td>
-                            </tr>
-                        }
-                        </tbody>
-                    </table>
+    <!-- Account Summary -->
+    <div class="row g-3 mb-4">
+
+        <!-- Orders -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Total Orders</h6>
+
+                    <h2 class="mb-3">
+                        @Model.TotalOrders
+                    </h2>
+
+                    <a asp-controller="Order"
+                       asp-action="Index"
+                       class="btn btn-outline-primary">
+                        View Orders
+                    </a>
                 </div>
-            }
-            else
-            {
-                <p class="p-3 mb-0 text-muted">No orders found.</p>
-            }
+            </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Saved Addresses</h6>
+
+                    <h2 class="mb-3">
+                        @Model.SavedAddresses
+                    </h2>
+
+                    <a asp-controller="Customer"
+                       asp-action="Addresses"
+                       class="btn btn-outline-primary">
+                        Manage Addresses
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6 class="text-muted">Account</h6>
+
+                    <p class="mb-1">
+                        <strong>@Model.FullName</strong>
+                    </p>
+
+                    <p class="text-muted mb-3">
+                        @Model.Email
+                    </p>
+
+                    <a asp-controller="Customer"
+                       asp-action="Profile"
+                       class="btn btn-outline-primary">
+                        View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Profile Information -->
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h5 class="mb-0">Account Information</h5>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <strong>Full Name</strong>
+                    <p class="text-muted mb-0">
+                        @Model.FullName
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Email</strong>
+                    <p class="text-muted mb-0">
+                        @Model.Email
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Phone Number</strong>
+                    <p class="text-muted mb-0">
+                        @(string.IsNullOrWhiteSpace(Model.PhoneNumber)
+                            ? "Not provided"
+                            : Model.PhoneNumber)
+                    </p>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <strong>Saved Addresses</strong>
+                    <p class="text-muted mb-0">
+                        @Model.SavedAddresses address(es)
+                    </p>
+                </div>
+
+            </div>
+
+            <a asp-controller="Customer"
+               asp-action="EditProfile"
+               class="btn btn-primary">
+                Edit Profile
+            </a>
+
         </div>
     </div>
+
 </div>
-
-
-
-
-
-

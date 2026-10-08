@@ -30,7 +30,9 @@ namespace SwiftCart.Controllers
             var model = new AboutViewModel
             {
                 AppName = "SwiftCart",
-                Tagline = "Fast, fresh, and convenient grocery delivery.",
+
+                Tagline =
+                    "Fast, fresh, and convenient grocery delivery.",
 
                 Description =
                     "SwiftCart is an on-demand grocery delivery platform " +
@@ -57,45 +59,58 @@ namespace SwiftCart.Controllers
                 },
 
                 Email = "support@swiftcart.com",
-                PhoneNumber = "+233 XX XXX XXXX",
-                Location = "Kumasi, Ghana",
+
+                PhoneNumber =
+                    "+233 XX XXX XXXX",
+
+                Location =
+                    "Kumasi, Ghana",
 
                 Features = new List<AboutFeatureViewModel>
                 {
                     new AboutFeatureViewModel
                     {
                         Title = "Fast Delivery",
+
                         Description =
                             "Get your groceries delivered quickly and conveniently.",
+
                         Icon = "bi bi-truck"
                     },
 
                     new AboutFeatureViewModel
                     {
                         Title = "Local Stores",
+
                         Description =
                             "Shop from trusted stores in your area.",
+
                         Icon = "bi bi-shop"
                     },
 
                     new AboutFeatureViewModel
                     {
                         Title = "Secure Payments",
+
                         Description =
                             "Pay securely using available payment methods.",
+
                         Icon = "bi bi-shield-check"
                     },
 
                     new AboutFeatureViewModel
                     {
                         Title = "Real-Time Tracking",
+
                         Description =
                             "Track your order and delivery progress.",
+
                         Icon = "bi bi-geo-alt"
                     }
                 },
 
-                TeamMembers = new List<AboutTeamMemberViewModel>()
+                TeamMembers =
+                    new List<AboutTeamMemberViewModel>()
             };
 
             return View(model);
@@ -112,6 +127,7 @@ namespace SwiftCart.Controllers
             var model = new PrivacyViewModel
             {
                 Title = "Privacy Policy",
+
                 AppName = "SwiftCart",
 
                 Introduction =
@@ -119,11 +135,17 @@ namespace SwiftCart.Controllers
                     "to protecting the personal information you provide when " +
                     "using our grocery delivery platform.",
 
-                LastUpdated = DateTime.UtcNow,
+                LastUpdated =
+                    DateTime.UtcNow,
 
-                ContactEmail = "privacy@swiftcart.com",
-                ContactPhone = "+233 XX XXX XXXX",
-                ContactAddress = "Kumasi, Ghana",
+                ContactEmail =
+                    "privacy@swiftcart.com",
+
+                ContactPhone =
+                    "+233 XX XXX XXXX",
+
+                ContactAddress =
+                    "Kumasi, Ghana",
 
                 ConsentMessage =
                     "By using SwiftCart, you acknowledge that you have read " +
@@ -137,7 +159,8 @@ namespace SwiftCart.Controllers
                 {
                     new PrivacySectionViewModel
                     {
-                        Heading = "Information We Collect",
+                        Heading =
+                            "Information We Collect",
 
                         Content =
                             "We may collect information that you provide when " +
@@ -156,7 +179,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "How We Use Your Information",
+                        Heading =
+                            "How We Use Your Information",
 
                         Content =
                             "We use collected information to provide and improve " +
@@ -175,7 +199,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Payment Information",
+                        Heading =
+                            "Payment Information",
 
                         Content =
                             "Payments are processed through supported payment " +
@@ -185,7 +210,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Location Information",
+                        Heading =
+                            "Location Information",
 
                         Content =
                             "Location information may be used when necessary " +
@@ -201,7 +227,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Data Security",
+                        Heading =
+                            "Data Security",
 
                         Content =
                             "We take reasonable measures to protect your " +
@@ -211,7 +238,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Your Privacy Rights",
+                        Heading =
+                            "Your Privacy Rights",
 
                         Content =
                             "Depending on applicable law, you may have rights " +
@@ -228,7 +256,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Changes to This Privacy Policy",
+                        Heading =
+                            "Changes to This Privacy Policy",
 
                         Content =
                             "We may update this Privacy Policy from time to time. " +
@@ -237,7 +266,8 @@ namespace SwiftCart.Controllers
 
                     new PrivacySectionViewModel
                     {
-                        Heading = "Contact Us",
+                        Heading =
+                            "Contact Us",
 
                         Content =
                             "If you have questions or concerns about this Privacy Policy, " +
@@ -247,6 +277,17 @@ namespace SwiftCart.Controllers
             };
 
             return View(model);
+        }
+
+        // =========================================================
+        // HELP CENTRE
+        // =========================================================
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Help()
+        {
+            return View();
         }
 
         // =========================================================
@@ -272,10 +313,12 @@ namespace SwiftCart.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.ReturnUrl = returnUrl;
+
                 return View(model);
             }
 
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _userManager.FindByEmailAsync(
+                model.Email);
 
             if (user == null)
             {
@@ -284,6 +327,7 @@ namespace SwiftCart.Controllers
                     "Invalid email or password.");
 
                 ViewBag.ReturnUrl = returnUrl;
+
                 return View(model);
             }
 
@@ -294,6 +338,7 @@ namespace SwiftCart.Controllers
                     "Your account has been disabled. Please contact support.");
 
                 ViewBag.ReturnUrl = returnUrl;
+
                 return View(model);
             }
 
@@ -325,6 +370,7 @@ namespace SwiftCart.Controllers
                     "Your account has been temporarily locked because of multiple failed login attempts.");
 
                 ViewBag.ReturnUrl = returnUrl;
+
                 return View(model);
             }
 
@@ -335,6 +381,7 @@ namespace SwiftCart.Controllers
                     "You are not currently allowed to sign in.");
 
                 ViewBag.ReturnUrl = returnUrl;
+
                 return View(model);
             }
 
@@ -369,8 +416,8 @@ namespace SwiftCart.Controllers
                 return View(model);
             }
 
-            var existingUser = await _userManager.FindByEmailAsync(
-                model.Email);
+            var existingUser =
+                await _userManager.FindByEmailAsync(model.Email);
 
             if (existingUser != null)
             {
@@ -390,7 +437,9 @@ namespace SwiftCart.Controllers
                 Role = UserRole.Customer,
 
                 IsActive = true,
-                CreatedDate = DateTime.UtcNow
+
+                CreatedDate =
+                    DateTime.UtcNow
             };
 
             var result = await _userManager.CreateAsync(
@@ -409,9 +458,10 @@ namespace SwiftCart.Controllers
                 return View(model);
             }
 
-            var roleResult = await _userManager.AddToRoleAsync(
-                user,
-                UserRole.Customer.ToString());
+            var roleResult =
+                await _userManager.AddToRoleAsync(
+                    user,
+                    UserRole.Customer.ToString());
 
             if (!roleResult.Succeeded)
             {
@@ -474,8 +524,8 @@ namespace SwiftCart.Controllers
                 return View(model);
             }
 
-            var user = await _userManager.FindByEmailAsync(
-                model.Email);
+            var user =
+                await _userManager.FindByEmailAsync(model.Email);
 
             if (user != null && user.IsActive)
             {
@@ -483,15 +533,16 @@ namespace SwiftCart.Controllers
                     await _userManager.GeneratePasswordResetTokenAsync(
                         user);
 
-                var resetUrl = Url.Action(
-                    nameof(ResetPassword),
-                    "Account",
-                    new
-                    {
-                        email = user.Email,
-                        token = token
-                    },
-                    Request.Scheme);
+                var resetUrl =
+                    Url.Action(
+                        nameof(ResetPassword),
+                        "Account",
+                        new
+                        {
+                            email = user.Email,
+                            token = token
+                        },
+                        Request.Scheme);
 
                 // TODO:
                 // Send resetUrl through your email service.
@@ -548,8 +599,8 @@ namespace SwiftCart.Controllers
                 return View(model);
             }
 
-            var user = await _userManager.FindByEmailAsync(
-                model.Email);
+            var user =
+                await _userManager.FindByEmailAsync(model.Email);
 
             if (user == null)
             {
@@ -560,10 +611,11 @@ namespace SwiftCart.Controllers
                 return View(model);
             }
 
-            var result = await _userManager.ResetPasswordAsync(
-                user,
-                model.Token,
-                model.Password);
+            var result =
+                await _userManager.ResetPasswordAsync(
+                    user,
+                    model.Token,
+                    model.Password);
 
             if (result.Succeeded)
             {
@@ -610,23 +662,27 @@ namespace SwiftCart.Controllers
         private async Task<IActionResult> RedirectUserByRole(
             ApplicationUser user)
         {
-            var roles = await _userManager.GetRolesAsync(user);
+            var roles =
+                await _userManager.GetRolesAsync(user);
 
-            if (roles.Contains(UserRole.Admin.ToString()))
+            if (roles.Contains(
+                UserRole.Admin.ToString()))
             {
                 return RedirectToAction(
                     "Dashboard",
                     "Admin");
             }
 
-            if (roles.Contains(UserRole.StoreOwner.ToString()))
+            if (roles.Contains(
+                UserRole.StoreOwner.ToString()))
             {
                 return RedirectToAction(
                     "Dashboard",
                     "Store");
             }
 
-            if (roles.Contains(UserRole.Rider.ToString()))
+            if (roles.Contains(
+                UserRole.Rider.ToString()))
             {
                 return RedirectToAction(
                     "Dashboard",
@@ -639,3 +695,4 @@ namespace SwiftCart.Controllers
         }
     }
 }
+

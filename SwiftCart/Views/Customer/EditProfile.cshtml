@@ -1,38 +1,144 @@
-﻿@using SwiftCart.Models.ViewModels.Customer;
-@model SwiftCart.Models.ViewModels.Customer.EditProfileViewModel
+﻿@model SwiftCart.Models.ViewModels.Customer.EditCustomerProfileViewModel
+
 @{
     ViewData["Title"] = "Edit Profile";
 }
 
 <div class="container py-4">
-    <h2 class="mb-4">Edit Profile</h2>
 
-    <form asp-action="EditProfile" method="post" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 
-        <div class="card shadow-sm"><div class="card-body">
-            <div class="mb-3">
-                <label asp-for="FullName" class="form-label"></label>
-                <input asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+            <div class="card shadow-sm">
+
+                <div class="card-header">
+                    <h4 class="mb-0">Edit Profile</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-controller="Customer"
+                          asp-action="EditProfile"
+                          method="post"
+                          enctype="multipart/form-data">
+
+                        @Html.AntiForgeryToken()
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <!-- Full Name -->
+                        <div class="mb-3">
+                            <label asp-for="FullName"
+                                   class="form-label">
+                                Full Name
+                            </label>
+
+                            <input asp-for="FullName"
+                                   class="form-control" />
+
+                            <span asp-validation-for="FullName"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Email"
+                                   class="form-label">
+                                Email Address
+                            </label>
+
+                            <input asp-for="Email"
+                                   class="form-control"
+                                   type="email" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber"
+                                   class="form-label">
+                                Phone Number
+                            </label>
+
+                            <input asp-for="PhoneNumber"
+                                   class="form-control"
+                                   type="tel" />
+
+                            <span asp-validation-for="PhoneNumber"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Existing Profile Photo -->
+                        @if (!string.IsNullOrEmpty(Model.ExistingProfilePhotoUrl))
+                        {
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Current Profile Photo
+                                </label>
+
+                                <div>
+                                    <img src="@Model.ExistingProfilePhotoUrl"
+                                         alt="Profile Photo"
+                                         class="img-thumbnail"
+                                         style="width: 120px; height: 120px; object-fit: cover;" />
+                                </div>
+                            </div>
+                        }
+
+                        <!-- New Profile Photo -->
+                        <div class="mb-3">
+                            <label asp-for="ProfilePhoto"
+                                   class="form-label">
+                                Profile Photo
+                            </label>
+
+                            <input asp-for="ProfilePhoto"
+                                   class="form-control"
+                                   type="file"
+                                   accept="image/*" />
+
+                            <span asp-validation-for="ProfilePhoto"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex gap-2 mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Save Changes
+                            </button>
+
+                            <a asp-controller="Customer"
+                               asp-action="Profile"
+                               class="btn btn-secondary">
+                                Cancel
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
             </div>
-            <div class="mb-3">
-                <label asp-for="PhoneNumber" class="form-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="ProfilePhoto" class="form-label">Profile Photo</label>
-                <input asp-for="ProfilePhoto" type="file" accept="image/*" class="form-control" />
-            </div>
-        </div><div class="card-footer">
-            <button class="btn btn-primary">Save Changes</button>
-            <a asp-action="Profile" class="btn btn-outline-secondary">Cancel</a>
-        </div></div>
-    </form>
+
+        </div>
+    </div>
+
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+

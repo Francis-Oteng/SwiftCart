@@ -28,19 +28,6 @@ namespace SwiftCart.Models.ViewModels.Product
         public IEnumerable<SelectListItem> CategoryOptions { get; set; }
             = new List<SelectListItem>();
     }
-
-    public class ProductListItemViewModel
-    {
-        public int ProductId { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string? ImageUrl { get; set; }
-        public string? CategoryName { get; set; }
-        public string? StoreName { get; set; }
-
-        public decimal Price { get; set; }
-        public int AvailableStock { get; set; }
-
-        public bool IsAvailable { get; set; }
-        public string Status { get; set; } = string.Empty;
-    }
 }
+
+   

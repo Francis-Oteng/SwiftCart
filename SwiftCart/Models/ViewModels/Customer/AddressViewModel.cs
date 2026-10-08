@@ -10,18 +10,30 @@ namespace SwiftCart.Models.ViewModels.Customer
             = new List<AddressItemViewModel>();
     }
 
-    public class AddressItemViewModel
-    {
-        public int AddressId { get; set; }
-        public string Label { get; set; } = string.Empty;
-        public string RecipientName { get; set; } = string.Empty;
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string AddressLine { get; set; } = string.Empty;
-        public string City { get; set; } = string.Empty;
-        public string? Region { get; set; }
-        public string? DigitalAddress { get; set; }
-        public bool IsDefault { get; set; }
+ 
+    
+        public class AddressItemViewModel
+        {
+            public int AddressId { get; set; }
+
+            public string Label { get; set; } = string.Empty;
+
+            public string RecipientName { get; set; } = string.Empty;
+
+            public string PhoneNumber { get; set; } = string.Empty;
+
+            public string AddressLine { get; set; } = string.Empty;
+
+            public string City { get; set; } = string.Empty;
+
+            public string? Region { get; set; }
+
+            public string? DigitalAddress { get; set; }
+
+            public bool IsDefault { get; set; }
+        }
     }
+
 
     public class AddAddressViewModel
     {
@@ -55,4 +67,4 @@ namespace SwiftCart.Models.ViewModels.Customer
     {
         public int AddressId { get; set; }
     }
-}
+

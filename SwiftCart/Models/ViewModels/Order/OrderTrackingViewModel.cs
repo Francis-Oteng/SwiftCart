@@ -1,13 +1,10 @@
-﻿// ViewModels/Order/OrderTrackingViewModel.cs
-
-using SwiftCart.Models;
+﻿using SwiftCart.Models;
+using System.Collections.Generic;
 
 namespace SwiftCart.Models.ViewModels.Order
 {
     public class OrderTrackingViewModel
     {
-        public int OrderId { get; set; }
-
         public string OrderNumber { get; set; } = string.Empty;
 
         public OrderStatus Status { get; set; }
@@ -16,21 +13,8 @@ namespace SwiftCart.Models.ViewModels.Order
 
         public int? DeliveryId { get; set; }
 
-        public IEnumerable<OrderTrackingStepViewModel> Steps { get; set; }
+        public List<OrderTrackingStepViewModel> Steps { get; set; }
             = new List<OrderTrackingStepViewModel>();
-    }
-
-    public class OrderTrackingStepViewModel
-    {
-        public string Title { get; set; } = string.Empty;
-
-        public string? Description { get; set; }
-
-        public bool IsCompleted { get; set; }
-
-        public bool IsCurrent { get; set; }
-
-        public DateTime? Timestamp { get; set; }
     }
 }
 

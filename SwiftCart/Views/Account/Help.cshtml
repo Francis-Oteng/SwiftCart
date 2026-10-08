@@ -1,251 +1,1276 @@
-﻿@using SwiftCart.Models.ViewModels.Home;
-@model SwiftCart.Models.ViewModels.Home.HelpViewModel
-
-@{
+﻿@{
     ViewData["Title"] = "Help Centre";
 }
 
 <div class="container py-5">
 
-    <!-- Header -->
+    <!-- =========================================================
+         PAGE HEADER
+    ========================================================== -->
+
     <div class="text-center mb-5">
-        <span class="badge bg-success-subtle text-success px-3 py-2 mb-3">
-            SwiftCart Support
-        </span>
 
-        <h1 class="display-5 fw-bold">How can we help?</h1>
-
-        <p class="text-muted mx-auto" style="max-width: 650px;">
-            Find answers to common questions about shopping, orders, payments,
-            deliveries and your SwiftCart account.
-        </p>
-    </div>
-
-    <!-- Search -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-7">
-            <div class="input-group input-group-lg shadow-sm">
-                <span class="input-group-text bg-white border-end-0">
-                    <i class="fa-solid fa-magnifying-glass text-muted"></i>
-                </span>
-
-                <input type="text"
-                       class="form-control border-start-0"
-                       placeholder="Search for help..." />
-
-                <button class="btn btn-success">
-                    Search
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Help Categories -->
-    <div class="row g-4 mb-5">
-
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 p-4">
-                <i class="fa-solid fa-cart-shopping text-success fs-2 mb-3"></i>
-
-                <h4 class="fw-bold">Orders & Shopping</h4>
-
-                <p class="text-muted">
-                    Learn how to browse stores, add products to your cart and
-                    place an order.
-                </p>
-
-                <a href="#orders" class="text-success text-decoration-none fw-semibold">
-                    Learn more <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
+        <div class="mb-3">
+            <i class="bi bi-headset display-4 text-primary"></i>
         </div>
 
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 p-4">
-                <i class="fa-solid fa-truck-fast text-success fs-2 mb-3"></i>
+        <h1 class="fw-bold">
+            SwiftCart Help Centre
+        </h1>
 
-                <h4 class="fw-bold">Delivery</h4>
-
-                <p class="text-muted">
-                    Find information about delivery status, riders and
-                    tracking your order.
-                </p>
-
-                <a href="#delivery" class="text-success text-decoration-none fw-semibold">
-                    Learn more <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm h-100 p-4">
-                <i class="fa-solid fa-credit-card text-success fs-2 mb-3"></i>
-
-                <h4 class="fw-bold">Payments</h4>
-
-                <p class="text-muted">
-                    Get help with payments, checkout and order confirmation.
-                </p>
-
-                <a href="#payments" class="text-success text-decoration-none fw-semibold">
-                    Learn more <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- FAQ -->
-    <div class="row justify-content-center">
-
-        <div class="col-lg-9">
-
-            <h2 class="fw-bold text-center mb-4">
-                Frequently Asked Questions
-            </h2>
-
-            <div class="accordion shadow-sm" id="faqAccordion">
-
-                <!-- FAQ 1 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button fw-semibold"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#faqOne">
-                            How do I place an order?
-                        </button>
-                    </h2>
-
-                    <div id="faqOne"
-                         class="accordion-collapse collapse show"
-                         data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body text-muted">
-                            Browse the available stores, select the products
-                            you want, add them to your cart and proceed to
-                            checkout.
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-semibold"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#faqTwo">
-                            How can I track my order?
-                        </button>
-                    </h2>
-
-                    <div id="faqTwo"
-                         class="accordion-collapse collapse"
-                         data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body text-muted">
-                            Once your order has been accepted and assigned for
-                            delivery, you can use the order tracking section
-                            to view its current status.
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-semibold"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#faqThree">
-                            Can I cancel my order?
-                        </button>
-                    </h2>
-
-                    <div id="faqThree"
-                         class="accordion-collapse collapse"
-                         data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body text-muted">
-                            Order cancellation depends on the current status
-                            of your order. Check your order details for the
-                            available cancellation options.
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-semibold"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#faqFour">
-                            What if my order is late?
-                        </button>
-                    </h2>
-
-                    <div id="faqFour"
-                         class="accordion-collapse collapse"
-                         data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body text-muted">
-                            Check your order tracking information first. If
-                            you still need assistance, contact SwiftCart
-                            support.
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- FAQ 5 -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed fw-semibold"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#faqFive">
-                            How do I contact SwiftCart support?
-                        </button>
-                    </h2>
-
-                    <div id="faqFive"
-                         class="accordion-collapse collapse"
-                         data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body text-muted">
-                            You can contact the SwiftCart support team through
-                            the support information provided below.
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Contact Support -->
-    <div class="bg-success-subtle rounded-4 p-5 text-center mt-5">
-
-        <i class="fa-solid fa-headset text-success fs-1 mb-3"></i>
-
-        <h3 class="fw-bold">Still need help?</h3>
-
-        <p class="text-muted">
-            Our support team is here to help you with your SwiftCart experience.
+        <p class="lead text-muted">
+            Everything you need to know about shopping, orders,
+            delivery, payments, and your SwiftCart account.
         </p>
 
-        <a href="mailto:support@swiftcart.com"
-           class="btn btn-success px-4">
-            <i class="fa-solid fa-envelope me-2"></i>
-            Contact Support
+    </div>
+
+
+    <!-- =========================================================
+         QUICK NAVIGATION
+    ========================================================== -->
+
+    <div class="card shadow-sm border-0 mb-5">
+
+        <div class="card-body p-4">
+
+            <h4 class="fw-bold mb-4">
+                <i class="bi bi-grid me-2"></i>
+                How can we help you?
+            </h4>
+
+            <div class="row g-3">
+
+                <div class="col-md-4">
+
+                    <a href="#orders"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-cart3 fs-2 text-primary me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Orders & Shopping
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Shopping, cart and orders
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#delivery"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-truck fs-2 text-success me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Delivery
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Tracking and delivery
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#payments"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-credit-card fs-2 text-warning me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Payments
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Payments and refunds
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#account"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-person-circle fs-2 text-info me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Account
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Profile and account
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#stores"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-shop fs-2 text-danger me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Stores & Products
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Stores and groceries
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <a href="#support"
+                       class="text-decoration-none">
+
+                        <div class="border rounded p-3 h-100">
+
+                            <div class="d-flex align-items-center">
+
+                                <i class="bi bi-headset fs-2 text-secondary me-3"></i>
+
+                                <div>
+                                    <h6 class="fw-bold mb-1">
+                                        Support
+                                    </h6>
+
+                                    <small class="text-muted">
+                                        Contact SwiftCart
+                                    </small>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         ORDERS & SHOPPING
+    ========================================================== -->
+
+    <section id="orders" class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-cart3 fs-2 text-primary me-3"></i>
+
+            <div>
+                <h2 class="fw-bold mb-1">
+                    Orders & Shopping
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Everything about shopping and managing your orders.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="accordion" id="ordersAccordion">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#shopping1">
+
+                        How do I shop on SwiftCart?
+
+                    </button>
+
+                </h2>
+
+                <div id="shopping1"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#ordersAccordion">
+
+                    <div class="accordion-body">
+
+                        Browse the available stores on SwiftCart,
+                        select a store, and browse the products available
+                        from that store.
+
+                        <br><br>
+
+                        Select the products you want, choose the quantity,
+                        and add them to your shopping cart.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#shopping2">
+
+                        How do I add a product to my cart?
+
+                    </button>
+
+                </h2>
+
+                <div id="shopping2"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#ordersAccordion">
+
+                    <div class="accordion-body">
+
+                        Open a product and select the quantity you want.
+                        Click <strong>Add to Cart</strong>.
+
+                        <br><br>
+
+                        You can open your cart at any time to review,
+                        increase, decrease, or remove products.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#shopping3">
+
+                        How do I place an order?
+
+                    </button>
+
+                </h2>
+
+                <div id="shopping3"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#ordersAccordion">
+
+                    <div class="accordion-body">
+
+                        Add your desired products to your cart and proceed
+                        to checkout.
+
+                        <br><br>
+
+                        Select your delivery address, review your order,
+                        select your payment method, and confirm your order.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#shopping4">
+
+                        Can I cancel my order?
+
+                    </button>
+
+                </h2>
+
+                <div id="shopping4"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#ordersAccordion">
+
+                    <div class="accordion-body">
+
+                        Order cancellation depends on the current status
+                        of the order.
+
+                        <br><br>
+
+                        If cancellation is available, you can cancel the
+                        order from your Orders page.
+
+                        <br><br>
+
+                        Orders that have already been picked up or are
+                        already being delivered may not be cancellable.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#shopping5">
+
+                        Where can I see my orders?
+
+                    </button>
+
+                </h2>
+
+                <div id="shopping5"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#ordersAccordion">
+
+                    <div class="accordion-body">
+
+                        After signing in, open your Customer Dashboard
+                        and select <strong>My Orders</strong>.
+
+                        <br><br>
+
+                        You can view your order history, order status,
+                        items, payment information, and delivery progress.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         DELIVERY
+    ========================================================== -->
+
+    <section id="delivery" class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-truck fs-2 text-success me-3"></i>
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Delivery
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Information about delivery and order tracking.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion" id="deliveryAccordion">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#delivery1">
+
+                        How does SwiftCart delivery work?
+
+                    </button>
+
+                </h2>
+
+                <div id="delivery1"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#deliveryAccordion">
+
+                    <div class="accordion-body">
+
+                        After your order is confirmed, the store begins
+                        preparing your groceries.
+
+                        <br><br>
+
+                        Once your order is ready, a rider can be assigned
+                        to collect the order from the store and deliver it
+                        to your selected address.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#delivery2">
+
+                        How can I track my delivery?
+
+                    </button>
+
+                </h2>
+
+                <div id="delivery2"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#deliveryAccordion">
+
+                    <div class="accordion-body">
+
+                        Open your order from the Orders page.
+
+                        <br><br>
+
+                        When tracking information is available, you can
+                        view the current delivery status and progress
+                        of your order.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#delivery3">
+
+                        What do the delivery statuses mean?
+
+                    </button>
+
+                </h2>
+
+                <div id="delivery3"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#deliveryAccordion">
+
+                    <div class="accordion-body">
+
+                        <ul>
+
+                            <li class="mb-2">
+                                <strong>Waiting for Rider:</strong>
+                                Your order is waiting for a rider.
+                            </li>
+
+                            <li class="mb-2">
+                                <strong>Assigned:</strong>
+                                A rider has been assigned.
+                            </li>
+
+                            <li class="mb-2">
+                                <strong>Picked Up:</strong>
+                                The rider has collected your order.
+                            </li>
+
+                            <li class="mb-2">
+                                <strong>In Transit:</strong>
+                                Your order is on the way.
+                            </li>
+
+                            <li class="mb-2">
+                                <strong>Delivered:</strong>
+                                Your order has been delivered.
+                            </li>
+
+                            <li>
+                                <strong>Cancelled:</strong>
+                                The delivery has been cancelled.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#delivery4">
+
+                        What happens if my order is late?
+
+                    </button>
+
+                </h2>
+
+                <div id="delivery4"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#deliveryAccordion">
+
+                    <div class="accordion-body">
+
+                        Check your order tracking information first.
+
+                        <br><br>
+
+                        If your order appears to be significantly delayed,
+                        contact SwiftCart support so that the order can
+                        be investigated.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         PAYMENTS
+    ========================================================== -->
+
+    <section id="payments" class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-credit-card fs-2 text-warning me-3"></i>
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Payments
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Information about payments, failures, and refunds.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion" id="paymentsAccordion">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#payment1">
+
+                        What payment methods are available?
+
+                    </button>
+
+                </h2>
+
+                <div id="payment1"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#paymentsAccordion">
+
+                    <div class="accordion-body">
+
+                        SwiftCart supports the payment methods configured
+                        by the platform.
+
+                        <br><br>
+
+                        Available payment options are displayed during
+                        checkout.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#payment2">
+
+                        What happens if my payment fails?
+
+                    </button>
+
+                </h2>
+
+                <div id="payment2"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#paymentsAccordion">
+
+                    <div class="accordion-body">
+
+                        If a payment fails, check that your payment details
+                        are correct and try again.
+
+                        <br><br>
+
+                        If money was deducted from your account but your
+                        order was not confirmed, contact SwiftCart support
+                        with your order and payment details.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#payment3">
+
+                        What does "Payment Pending" mean?
+
+                    </button>
+
+                </h2>
+
+                <div id="payment3"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#paymentsAccordion">
+
+                    <div class="accordion-body">
+
+                        A pending payment means that SwiftCart has not yet
+                        received final confirmation of the payment.
+
+                        <br><br>
+
+                        Avoid making multiple payments for the same order
+                        until the payment status has been confirmed.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#payment4">
+
+                        Can I get a refund?
+
+                    </button>
+
+                </h2>
+
+                <div id="payment4"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#paymentsAccordion">
+
+                    <div class="accordion-body">
+
+                        Refunds depend on the circumstances of the order,
+                        payment status, and SwiftCart's refund policy.
+
+                        <br><br>
+
+                        Contact support if you believe you are entitled
+                        to a refund.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ACCOUNT
+    ========================================================== -->
+
+    <section id="account" class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-person-circle fs-2 text-info me-3"></i>
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Account
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Managing your SwiftCart account.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion" id="accountAccordion">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#account1">
+
+                        How do I edit my profile?
+
+                    </button>
+
+                </h2>
+
+                <div id="account1"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#accountAccordion">
+
+                    <div class="accordion-body">
+
+                        Sign in to your SwiftCart account and open your
+                        Customer Profile.
+
+                        <br><br>
+
+                        Select <strong>Edit Profile</strong> to update
+                        your personal information.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#account2">
+
+                        I forgot my password. What should I do?
+
+                    </button>
+
+                </h2>
+
+                <div id="account2"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#accountAccordion">
+
+                    <div class="accordion-body">
+
+                        Go to the SwiftCart Login page and select
+                        <strong>Forgot Password</strong>.
+
+                        <br><br>
+
+                        Follow the instructions to reset your password.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#account3">
+
+                        How do I manage my delivery addresses?
+
+                    </button>
+
+                </h2>
+
+                <div id="account3"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#accountAccordion">
+
+                    <div class="accordion-body">
+
+                        Open your Customer Profile and go to your
+                        <strong>Addresses</strong> section.
+
+                        <br><br>
+
+                        You can add, edit, delete, and select a default
+                        delivery address.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         STORES & PRODUCTS
+    ========================================================== -->
+
+    <section id="stores" class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-shop fs-2 text-danger me-3"></i>
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Stores & Products
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Information about stores and grocery products.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="accordion" id="storesAccordion">
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#store1">
+
+                        How do I find a store?
+
+                    </button>
+
+                </h2>
+
+                <div id="store1"
+                     class="accordion-collapse collapse show"
+                     data-bs-parent="#storesAccordion">
+
+                    <div class="accordion-body">
+
+                        Open the Stores section of SwiftCart.
+
+                        <br><br>
+
+                        You can browse available stores and view their
+                        products and locations.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#store2">
+
+                        Why can't I order from a store?
+
+                    </button>
+
+                </h2>
+
+                <div id="store2"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#storesAccordion">
+
+                    <div class="accordion-body">
+
+                        A store may currently be closed, unavailable,
+                        suspended, or have no available products.
+
+                        <br><br>
+
+                        Try checking another store or returning later.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="accordion-item">
+
+                <h2 class="accordion-header">
+
+                    <button class="accordion-button collapsed"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#store3">
+
+                        What if a product is out of stock?
+
+                    </button>
+
+                </h2>
+
+                <div id="store3"
+                     class="accordion-collapse collapse"
+                     data-bs-parent="#storesAccordion">
+
+                    <div class="accordion-body">
+
+                        Products that are unavailable may be marked as
+                        out of stock.
+
+                        <br><br>
+
+                        You can choose another available product or
+                        check again later.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         SECURITY & PRIVACY
+    ========================================================== -->
+
+    <section class="mb-5">
+
+        <div class="d-flex align-items-center mb-4">
+
+            <i class="bi bi-shield-check fs-2 text-primary me-3"></i>
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Security & Privacy
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Keeping your SwiftCart account secure.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card border-0 shadow-sm">
+
+            <div class="card-body p-4">
+
+                <h5 class="fw-bold">
+                    Protect your account
+                </h5>
+
+                <ul class="mt-3">
+
+                    <li class="mb-2">
+                        Keep your password private.
+                    </li>
+
+                    <li class="mb-2">
+                        Use a strong and unique password.
+                    </li>
+
+                    <li class="mb-2">
+                        Do not share payment information unnecessarily.
+                    </li>
+
+                    <li class="mb-2">
+                        Log out when using a shared device.
+                    </li>
+
+                    <li>
+                        Contact SwiftCart support if you notice
+                        suspicious activity.
+                    </li>
+
+                </ul>
+
+                <a asp-controller="Account"
+                   asp-action="Privacy"
+                   class="btn btn-outline-primary mt-3">
+
+                    View Privacy Policy
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT SUPPORT
+    ========================================================== -->
+
+    <section id="support" class="mb-5">
+
+        <div class="card border-0 shadow-sm bg-light">
+
+            <div class="card-body text-center p-5">
+
+                <i class="bi bi-headset display-5 text-primary"></i>
+
+                <h2 class="fw-bold mt-3">
+                    Still need help?
+                </h2>
+
+                <p class="text-muted">
+
+                    If you cannot find the answer you're looking for,
+                    contact the SwiftCart support team.
+
+                </p>
+
+
+                <div class="row justify-content-center mt-4">
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3 bg-white rounded">
+
+                            <i class="bi bi-envelope fs-4 text-primary"></i>
+
+                            <h6 class="fw-bold mt-2">
+                                Email
+                            </h6>
+
+                            <p class="mb-0">
+                                support@swiftcart.com
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3 bg-white rounded">
+
+                            <i class="bi bi-telephone fs-4 text-success"></i>
+
+                            <h6 class="fw-bold mt-2">
+                                Phone
+                            </h6>
+
+                            <p class="mb-0">
+                                +233 XX XXX XXXX
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-md-4 mb-3">
+
+                        <div class="p-3 bg-white rounded">
+
+                            <i class="bi bi-geo-alt fs-4 text-danger"></i>
+
+                            <h6 class="fw-bold mt-2">
+                                Location
+                            </h6>
+
+                            <p class="mb-0">
+                                Kumasi, Ghana
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         BACK TO TOP
+    ========================================================== -->
+
+    <div class="text-center mt-5">
+
+        <a href="#"
+           class="btn btn-outline-secondary">
+
+            <i class="bi bi-arrow-up me-2"></i>
+            Back to Top
+
         </a>
 
     </div>
