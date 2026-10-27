@@ -18,5 +18,10 @@ namespace SwiftCart.Models.ViewModels.Account
         public bool RememberMe { get; set; }
 
         public string? ReturnUrl { get; set; }
+
+      [Required(ErrorMessage = "Please select your account role.")]
+         public string Role { get; set; } = string.Empty;
+
+
     }
 }

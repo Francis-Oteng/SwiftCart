@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SwiftCart.Data;
 using SwiftCart.Models;
@@ -6,6 +8,7 @@ using SwiftCart.Models.ViewModels.Store;
 
 namespace SwiftCart.Controllers
 {
+    [Authorize(Roles = "StoreOwner")]
     public class StoreController : Controller
     {
         private readonly SwiftCartDbContext _context;
@@ -14,7 +17,6 @@ namespace SwiftCart.Controllers
         {
             _context = context;
         }
-
 
         [HttpGet]
         public async Task<IActionResult> Index()

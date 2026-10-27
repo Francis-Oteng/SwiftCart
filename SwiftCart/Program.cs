@@ -1,20 +1,17 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SwiftCart.Controllers;
 using SwiftCart.Data;
 using SwiftCart.Models;
-using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-var connectionString =
-    builder.Configuration.GetConnectionString("DefaultConnection")
-    ?? "Data Source=swiftcart.db";
+// Get SQL Server connection string
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")    ?? throw new InvalidOperationException(
+        "Connection string 'DefaultConnection' was not found.");
 
+// Add SQL Server DbContext
 builder.Services.AddDbContext<SwiftCartDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlServer(connectionString));
 
 // ASP.NET Core Identity
 builder.Services
@@ -33,17 +30,15 @@ builder.Services
     .AddEntityFrameworkStores<SwiftCartDbContext>()
     .AddDefaultTokenProviders();
 
-// Configure Identity cookie paths.
+// Configure Identity cookie paths
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Account/Login";
     options.AccessDeniedPath = "/Account/AccessDenied";
     options.LogoutPath = "/Account/Logout";
-
-    // Do not automatically redirect the homepage.
-    // The homepage remains publicly accessible.
 });
 
+// MVC
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -57,7 +52,7 @@ using (var scope = app.Services.CreateScope())
     await IdentitySeeder.SeedRolesAsync(roleManager);
 }
 
-// Configure the HTTP request pipeline.
+// Configure HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -70,15 +65,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Authentication must come before Authorization.
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Map static assets if your project uses the .NET 9 static asset system.
 app.MapStaticAssets();
 
-// Default route.
-// Opening "/" goes to HomeController -> Index().
+// Default route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")

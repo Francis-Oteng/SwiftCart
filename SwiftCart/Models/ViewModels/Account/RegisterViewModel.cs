@@ -32,6 +32,9 @@ namespace SwiftCart.Models.ViewModels.Account
         public string ConfirmPassword { get; set; } = string.Empty;
 
         [Required]
-        public UserRole Role { get; set; } = UserRole.Customer;
+        [Required(ErrorMessage = "Please select an account role.")]
+        public string Role { get; set; } = string.Empty;
+
+
     }
 }

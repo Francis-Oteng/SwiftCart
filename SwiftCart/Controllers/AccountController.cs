@@ -394,6 +394,101 @@ namespace SwiftCart.Controllers
             return View(model);
         }
 
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(
+        LoginViewModel model,
+        string? returnUrl = null)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            var user = await _userManager.FindByEmailAsync(model.Email);
+
+            if (user == null || !user.IsActive)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Invalid email or password, or the account is disabled.");
+
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            // Each account must have one of the recognized roles.
+            var validRoles = new[]
+            {
+        UserRole.Customer.ToString(),
+        UserRole.StoreOwner.ToString(),
+        UserRole.Rider.ToString(),
+        UserRole.Admin.ToString()
+    };
+
+            var assignedRoles = userRoles
+                .Where(r => validRoles.Contains(
+                    r, StringComparer.OrdinalIgnoreCase))
+                .ToList();
+
+            if (assignedRoles.Count != 1 ||
+                !string.Equals(
+                    assignedRoles[0],
+                    model.Role,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                ModelState.AddModelError(
+                    nameof(model.Role),
+                    "The selected role does not match your assigned account role.");
+
+                ViewBag.ReturnUrl = returnUrl;
+                return View(model);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                user,
+                model.Password,
+                model.RememberMe,
+                lockoutOnFailure: true);
+
+            if (result.Succeeded)
+            {
+                user.LastLoginDate = DateTime.UtcNow;
+                await _userManager.UpdateAsync(user);
+
+                // Use the account's actual assigned role.
+                return await RedirectUserByRole(user);
+            }
+
+            if (result.IsLockedOut)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Your account has been temporarily locked after multiple failed login attempts.");
+            }
+            else if (result.IsNotAllowed)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "You are not currently allowed to sign in.");
+            }
+            else
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "Invalid email or password.");
+            }
+
+            ViewBag.ReturnUrl = returnUrl;
+            return View(model);
+        }
+
+
         // =========================================================
         // REGISTER
         // =========================================================
@@ -485,6 +580,97 @@ namespace SwiftCart.Controllers
                 "Dashboard",
                 "Customer");
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            // Only these roles may be selected during public registration.
+            var allowedRoles = new[]
+            {
+        UserRole.Customer.ToString(),
+        UserRole.StoreOwner.ToString(),
+        UserRole.Rider.ToString()
+    };
+
+            if (string.IsNullOrWhiteSpace(model.Role) ||
+                !allowedRoles.Contains(model.Role, StringComparer.OrdinalIgnoreCase))
+            {
+                ModelState.AddModelError(
+                    nameof(model.Role),
+                    "Please select a valid account role.");
+
+                return View(model);
+            }
+
+            // Use the exact role name expected by Identity.
+            var selectedRole = allowedRoles.First(
+                role => string.Equals(
+                    role,
+                    model.Role,
+                    StringComparison.OrdinalIgnoreCase));
+
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+
+            if (existingUser != null)
+            {
+                ModelState.AddModelError(
+                    nameof(model.Email),
+                    "An account with this email already exists.");
+
+                return View(model);
+            }
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FullName = model.FullName,
+                Role = Enum.Parse<UserRole>(selectedRole),
+                IsActive = true,
+                CreatedDate = DateTime.UtcNow
+            };
+
+            var createResult = await _userManager.CreateAsync(
+                user,
+                model.Password);
+
+            if (!createResult.Succeeded)
+            {
+                foreach (var error in createResult.Errors)
+                    ModelState.AddModelError(string.Empty, error.Description);
+
+                return View(model);
+            }
+
+            // Assign the selected role in ASP.NET Core Identity.
+            var roleResult = await _userManager.AddToRoleAsync(
+                user,
+                selectedRole);
+
+            if (!roleResult.Succeeded)
+            {
+                foreach (var error in roleResult.Errors)
+                    ModelState.AddModelError(string.Empty, error.Description);
+
+                // Avoid leaving behind an account with no assigned role.
+                await _userManager.DeleteAsync(user);
+
+                return View(model);
+            }
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
+
+            return await RedirectUserByRole(user);
+        }
+
+
+
+
 
         // =========================================================
         // LOGOUT
@@ -659,40 +845,44 @@ namespace SwiftCart.Controllers
         // ROLE-BASED REDIRECTION
         // =========================================================
 
-        private async Task<IActionResult> RedirectUserByRole(
-            ApplicationUser user)
+
+        private async Task<IActionResult> RedirectUserByRole(ApplicationUser user)
+
         {
-            var roles =
-                await _userManager.GetRolesAsync(user);
+            var roles = await _userManager.GetRolesAsync(user);
 
-            if (roles.Contains(
-                UserRole.Admin.ToString()))
+            if (roles.Count != 1)
             {
+                await _signInManager.SignOutAsync();
+
                 return RedirectToAction(
-                    "Dashboard",
-                    "Admin");
+                    nameof(AccessDenied),
+                    "Account");
             }
 
-            if (roles.Contains(
-                UserRole.StoreOwner.ToString()))
+            switch (roles[0])
             {
-                return RedirectToAction(
-                    "Dashboard",
-                    "Store");
-            }
+                case "Customer":
+                    return RedirectToAction("Dashboard", "Customer");
 
-            if (roles.Contains(
-                UserRole.Rider.ToString()))
-            {
-                return RedirectToAction(
-                    "Dashboard",
-                    "Rider");
-            }
+                case "StoreOwner":
+                    return RedirectToAction("Dashboard", "Store");
 
-            return RedirectToAction(
-                "Dashboard",
-                "Customer");
+                case "Rider":
+                    return RedirectToAction("Dashboard", "Rider");
+
+                case "Admin":
+                    return RedirectToAction("Dashboard", "Admin");
+
+                default:
+                    await _signInManager.SignOutAsync();
+
+                    return RedirectToAction(
+                        nameof(AccessDenied),
+                        "Account");
+            }
         }
     }
+
 }
 
